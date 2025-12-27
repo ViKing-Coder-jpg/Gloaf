@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_URL_DEV")
+}
+
+enum AccType {
+  GOOGLE
+  EMAIL
+}
+
+enum RestaurantStatus {
+  OPEN
+  CLOSED
+}
+
+enum Availability {
+  YES
+  NO
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  PREPARING
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  UPI
+  CARD
+  NETBANKING
+  COD
+}
+
+
+model User {
+  UserID Int @id @default(autoincrement())
+  Name String
+  Email String @unique
+  accType AccType
+  Password String?
+  externalRef String
+  created_at DateTime @default(now())
+  orders Order[]
+}
+
+model Restaurant {
+  RestaurantID Int @id @default(autoincrement())
+  Name String
+  Email String @unique
+  Password String
+  Phone String
+  status RestaurantStatus
+  externalRef String
+  created_at DateTime @default(now())
+
+  menu MenuItem[]
+  orders Order[]
+}
+
+model MenuItem {
+  ItemID Int @id @default(autoincrement())
+  RestaurantID Int
+  restaurant Restaurant @relation(fields: [RestaurantID], references: [RestaurantID])
+
+  ItemName String
+  ItemPrice Int
+  isAvailable Availability
+
+  orderItems OrderItem[]
+}
+
+model Order {
+  OrderID Int @id @default(autoincrement())
+  UserID Int
+  RestaurantID Int
+
+  user User @relation(fields: [UserID], references: [UserID])
+  restaurant Restaurant @relation(fields: [RestaurantID], references: [RestaurantID])
+
+  Amount Int
+  status OrderStatus
+  created_at DateTime @default(now())
+
+  orderItems OrderItem[]
+  payment Payment?
+}
+
+model OrderItem {
+  OrderItemID Int @id @default(autoincrement())
+
+  order Order @relation(fields: [OrderID], references: [OrderID])
+  OrderID Int
+
+  menuItem MenuItem @relation(fields: [MenuItemID], references: [ItemID])
+  MenuItemID Int
+
+  ItemName String
+  ItemPrice Int
+  Quantity Int
+}
+
+model Payment {
+  PaymentID Int @id @default(autoincrement())
+  OrderID Int @unique
+  order Order @relation(fields: [OrderID], references: [OrderID])
+
+  Amount Int
+  Method PaymentMethod
+  Status PaymentStatus
+  Transaction_reff String
+  Created_At DateTime @default(now())
+}
