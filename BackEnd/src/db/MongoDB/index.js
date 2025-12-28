@@ -19,6 +19,7 @@ const cart = mongoose.model("Cart", cartSchema);
 
 const userSchema = new mongoose.Schema({
   userID: Number,
+  Phone:{type:[Number]},
   address: [
     {
       label: String,
