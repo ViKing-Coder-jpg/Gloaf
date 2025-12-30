@@ -7,7 +7,7 @@ import img1 from "../assets/Images/cookies.jpg";
 import img2 from "../assets/Images/croissant.jpg";
 import img3 from "../assets/Images/pizza.jpg";
 
-const Signup = () => {
+const Login = () => {
   const imageData = [
     {
       imgKey: 1,
@@ -51,25 +51,9 @@ const Signup = () => {
             <h2 className="font-semibold text-3xl">Join Gloaf</h2>
             <p className="text-sm text-[#996842]">Good Food Starts Here.</p>
           </div>
-          <div className="h-full m-0">
+          <div className="h-[40vh] m-0">
             <form className="p-2">
-              <div className="space-y-4">
-                <div className="flex flex-col space-y-1">
-                  <label
-                    htmlFor="Name"
-                    className="block text-sm font-medium text-[#4D2308]"
-                  >
-                    Full Name :
-                  </label>
-                  <input
-                    type="text"
-                    id="Name"
-                    placeholder="Enter your full name"
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    required
-                  />
-                </div>
-
+              <div className="space-y-4 flex flex-col justify-evenly">
                 <div className="flex flex-col space-y-1">
                   <label
                     htmlFor="Email"
@@ -81,22 +65,6 @@ const Signup = () => {
                     type="email"
                     id="Email"
                     placeholder="Enter your email"
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    required
-                  />
-                </div>
-
-                <div className="flex flex-col space-y-1">
-                  <label
-                    htmlFor="Phone"
-                    className="block text-sm font-medium text-[#4D2308]"
-                  >
-                    Phone :
-                  </label>
-                  <input
-                    type="text"
-                    id="Phone"
-                    placeholder="Enter your phone number"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                     required
                   />
@@ -118,31 +86,13 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="flex flex-col space-y-1">
-                  <label
-                    htmlFor="Role"
-                    className="block text-sm font-medium text-[#4D2308]"
-                  >
-                    Sign up as :
-                  </label>
-                  <select
-                    id="Role"
-                    name="role"
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    defaultValue="customer"
-                  >
-                    <option value="customer">Customer</option>
-                    <option value="restaurant">Restaurant</option>
-                  </select>
-                </div>
-
                 <div className="flex flex-col items-center">
                   <div className="bg-[#F1B93D] h-9 w-80 rounded-md">
                     <button
                       type="submit"
                       className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <span>Create Account</span>
+                      <span>Sign in</span>
                       <FaArrowRight className="text-[#4D2308]" />
                     </button>
                   </div>
@@ -174,10 +124,10 @@ const Signup = () => {
             </div>
             <div className="flex flex-row justify-center m-2 p-2 text-[#4D2308] text-sm">
               <div>
-                Already have an account?
+                Don't have an account?
                 <span className="text-[#bd702d] font-medium cursor-pointer">
                   {" "}
-                  Sign in
+                  Sign up
                 </span>
               </div>
             </div>
@@ -188,4 +138,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
