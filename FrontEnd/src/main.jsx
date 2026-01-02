@@ -3,10 +3,13 @@ import './index.css'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Login from './Pages/login.jsx'
 import Signup from './Pages/signup.jsx'
-import Layout from './Pages/Layouts/CustomerLayout.jsx'
+import CustomerLayout from './Pages/Layouts/CustomerLayout.jsx'
 import HomeLayout from './Pages/Layouts/HomeLayout.jsx'
 import Home from './Pages/HomePages/Home.jsx'
 import About from './Pages/HomePages/About.jsx'
+import CustomerHome from './Pages/customer/CustomerHome.jsx'
+import PartnerLayout from './Pages/Layouts/PartnerLayout.jsx'
+import DashboardHome from './Pages/restaurant/PartnerHome.jsx'
 
 const router=createBrowserRouter([
     {
@@ -30,6 +33,26 @@ const router=createBrowserRouter([
     {
         path:'/signup',
         element:<Signup />
+    },
+    {
+        path:'/customer',
+        element:<CustomerLayout />,
+        children:[
+            {
+                path: '',
+                element:<CustomerHome />
+            }
+        ]
+    },
+    {
+        path:'/partner',
+        element:<PartnerLayout />,
+        children:[
+            {
+                path: '',
+                element:<DashboardHome />
+            }
+        ]
     }
 ])
 

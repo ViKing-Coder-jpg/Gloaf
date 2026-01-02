@@ -2,7 +2,7 @@ import React from "react";
 import GloafIcon from "../assets/Gloaf_icon.png";
 import { FaArrowRight } from "react-icons/fa";
 import GoogleIcon from "../assets/Google_icon.png";
-import ImageSlider from "../Components/ImageSlider";
+import ImageSlider from "../Components/Utilities/ImageSlider";
 import img1 from "../assets/Images/cookies.jpg";
 import img2 from "../assets/Images/croissant.jpg";
 import img3 from "../assets/Images/pizza.jpg";
