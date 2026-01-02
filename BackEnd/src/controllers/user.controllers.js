@@ -4,12 +4,15 @@ const { hashing } = require('../utils/bcryptor');
 const prisma = new prismaC.PrismaClient()
 
 const userCreate = async (req,res)=>{
-    const {Name,Email,accType,Password}=req.body;
+    const {Name,Email,accType,Password,Phone}=req.body;
     if(!Name || !Email || (accType=="EMAIL" && !Password)){
         return res.status(400).json({"Error":"Field not filled"})
     }
     try{
-    const hashedPassword= hashing(Password)
+    let hashedPassword = null;
+    if (accType == "EMAIL") {
+        hashedPassword = await hashing(Password);
+    }
     const data=await prisma.user.create({data:{
         Name:Name,
         Email:Email,
@@ -17,11 +20,15 @@ const userCreate = async (req,res)=>{
         Password:hashedPassword
     }});
     await userProfile.create({
-        userID:data.UserID,     
-    });
+        userID: data.UserID,
+        Phone: Phone ? [Phone] : []
+        });
     res.status(201).json({"message":"User was Created Successfully"});
     }catch(err){
         console.log('Error in userCreate : \n',err)
+        if (err.code === 'P2002') {
+            return res.status(409).json({ error: 'Email already exists' });
+        }
         return res.status(500).json({ error: 'Internal Server Error' })
     }
 }
