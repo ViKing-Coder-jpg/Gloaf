@@ -6,6 +6,7 @@ import ImageSlider from "../Components/Utilities/ImageSlider";
 import img1 from "../assets/Images/cookies.jpg";
 import img2 from "../assets/Images/croissant.jpg";
 import img3 from "../assets/Images/pizza.jpg";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const imageData = [
@@ -137,13 +138,13 @@ const Signup = () => {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <div className="bg-[#F1B93D] h-9 w-80 rounded-md">
+                  <div className="bg-[#F1B93D] h-9 w-80 rounded-md text-[#4D2308] hover:text-white transition ease-in-out duration-300">
                     <button
                       type="submit"
-                      className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer"
+                      className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer "
                     >
                       <span>Create Account</span>
-                      <FaArrowRight className="text-[#4D2308]" />
+                      <FaArrowRight />
                     </button>
                   </div>
                 </div>
@@ -161,8 +162,8 @@ const Signup = () => {
               </div>
             </div>
             <div className="flex flex-row justify-center">
-              <div className="bg-white border-[#e2c8b0] border h-9 w-80 rounded-md ">
-                <button className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer">
+              <div className="bg-white border-[#e2c8b0] border h-9 w-80 rounded-md text-[#4D2308] hover:bg-[#F1B93D] hover:text-white transition ease-in-out duration-300">
+                <button className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer">
                   <img
                     src={GoogleIcon}
                     alt="Google_Icon"
@@ -175,10 +176,12 @@ const Signup = () => {
             <div className="flex flex-row justify-center m-2 p-2 text-[#4D2308] text-sm">
               <div>
                 Already have an account?
+                <Link to='/login'>
                 <span className="text-[#bd702d] font-medium cursor-pointer">
                   {" "}
                   Sign in
                 </span>
+                </Link>
               </div>
             </div>
           </div>

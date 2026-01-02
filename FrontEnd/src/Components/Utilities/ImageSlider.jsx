@@ -12,25 +12,36 @@ const ImageSlider = (props) => {
     }, 5000);
     return () => clearInterval(interval);
   }, [imageInfo.length]);
-  const imgData = imageInfo[idx];
-  return (
-    <div className="h-full w-full overflow-hidden relative font-[Poppins, sans-serif]">
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white px-4">
-        <div className="max-w-[80%] text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold wrap-break-words">
-            {imgData.imgTitle}
-          </h2>
-          <p className="mt-2 text-sm md:text-base wrap-break-words">
-            {imgData.imgText}
-          </p>
+
+return (
+  <div className="h-full w-full overflow-hidden relative font-[Poppins, sans-serif]">
+    <div
+      className="flex h-full transition-transform duration-700 ease-in-out"
+      style={{ transform: `translateX(-${idx * 100}%)` }}
+    >
+      {imageInfo.map((img, i) => (
+        <div key={i} className="min-w-full h-full relative">
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white px-4">
+            <div className="max-w-[80%] text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold">
+                {img.imgTitle}
+              </h2>
+              <p className="mt-2 text-sm md:text-base">
+                {img.imgText}
+              </p>
+            </div>
+          </div>
+
+          <img
+            src={img.imgSrc}
+            alt="slider"
+            className="h-full w-full object-cover brightness-80"
+          />
         </div>
-      </div>
-      <img
-        src={imgData.imgSrc}
-        alt="image_slider"
-        className="h-full w-full  object-cover brightness-80"
-      />
+      ))}
     </div>
-  );
+  </div>
+);
+
 };
 export default ImageSlider;

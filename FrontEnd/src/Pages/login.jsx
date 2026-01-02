@@ -6,6 +6,8 @@ import ImageSlider from "../Components/Utilities/ImageSlider";
 import img1 from "../assets/Images/cookies.jpg";
 import img2 from "../assets/Images/croissant.jpg";
 import img3 from "../assets/Images/pizza.jpg";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
   const imageData = [
@@ -86,14 +88,32 @@ const Login = () => {
                   />
                 </div>
 
+                <div className="flex flex-col space-y-1">
+                  <label
+                    htmlFor="Role"
+                    className="block text-sm font-medium text-[#4D2308]"
+                  >
+                    Sign in as :
+                  </label>
+                  <select
+                    id="Role"
+                    name="role"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    defaultValue="customer"
+                  >
+                    <option value="customer">Customer</option>
+                    <option value="restaurant">Restaurant</option>
+                  </select>
+                </div>
+
                 <div className="flex flex-col items-center">
-                  <div className="bg-[#F1B93D] h-9 w-80 rounded-md">
+                  <div className="bg-[#F1B93D] h-9 w-80 rounded-md text-[#4D2308]  hover:text-white transition ease-in-out duration-300">
                     <button
                       type="submit"
-                      className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer"
+                      className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <span>Sign in</span>
-                      <FaArrowRight className="text-[#4D2308]" />
+                      <FaArrowRight />
                     </button>
                   </div>
                 </div>
@@ -112,7 +132,7 @@ const Login = () => {
             </div>
             <div className="flex flex-row justify-center">
               <div className="bg-white border-[#e2c8b0] border h-9 w-80 rounded-md ">
-                <button className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer">
+                <button className="h-full w-full text-[#4D2308] font-medium flex items-center justify-center gap-2 cursor-pointer hover:bg-[#F1B93D] hover:text-white transition ease-in-out duration-300">
                   <img
                     src={GoogleIcon}
                     alt="Google_Icon"
@@ -125,10 +145,12 @@ const Login = () => {
             <div className="flex flex-row justify-center m-2 p-2 text-[#4D2308] text-sm">
               <div>
                 Don't have an account?
+                <Link to='/signup'>
                 <span className="text-[#bd702d] font-medium cursor-pointer">
                   {" "}
                   Sign up
                 </span>
+                </Link>
               </div>
             </div>
           </div>
