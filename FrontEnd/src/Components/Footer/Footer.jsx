@@ -50,7 +50,7 @@ const Footer = () => {
         </div>
 
         <div className='border-t border-[#ebe6da] mt-8 pt-6 flex items-center justify-between text-sm text-gray-500'>
-          <div>Made by Vinayak</div>
+          <div>Made by Vinayak </div>
           <div className='text-gray-400'>English (US)</div>
         </div>
       </div>

@@ -10,6 +10,11 @@ import About from './Pages/HomePages/About.jsx'
 import CustomerHome from './Pages/customer/CustomerHome.jsx'
 import PartnerLayout from './Pages/Layouts/PartnerLayout.jsx'
 import DashboardHome from './Pages/restaurant/PartnerHome.jsx'
+import Loading from './Pages/Loading.jsx'
+import { Suspense } from 'react'
+
+
+
 
 const router=createBrowserRouter([
     {
@@ -53,9 +58,11 @@ const router=createBrowserRouter([
                 element:<DashboardHome />
             }
         ]
-    }
+    },
 ])
 
 createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}/>
+    <Suspense fallback={<Loading />} >
+        <RouterProvider router={router}/>
+    </Suspense>
 )

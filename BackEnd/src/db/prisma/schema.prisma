@@ -64,7 +64,7 @@ model Restaurant {
   Email String @unique
   Password String
   Phone String
-  status RestaurantStatus
+  status RestaurantStatus @default(CLOSED)
   externalRef String
   created_at DateTime @default(now())
 

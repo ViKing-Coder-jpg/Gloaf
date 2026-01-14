@@ -5,8 +5,8 @@ import Gloaf_icon from '../../assets/Gloaf_icon.png'
 
 const HomePageHeader = () => {
   return (
-    <header>
-    <div className=' bg-white/25 rounded-2xl shadow-lg backdrop-blur-md border border-white/35 h-18 w-screen flex items-center'>
+    <header className='top-0 left-0 sticky'>
+    <div className=' bg-white/25 rounded-bl-2xl rounded-br-2xl shadow-lg backdrop-blur-md border border-white/35 h-18 w-screen flex items-center'>
       <div className='h-full w-[30%] flex items-center pl-10 '>
         <Link to='/' className='flex items-center gap-3 h-12 hover:text-[#F1B93D] transition ease-in-out duration-300'>
           <img src={Gloaf_icon} alt='Gloaf icon' className='h-14 w-14 object-contain'/>

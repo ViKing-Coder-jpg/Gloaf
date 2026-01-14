@@ -5,11 +5,11 @@ import {Outlet} from 'react-router-dom'
 
 const HomeLayout = () => {
   return (
-    <>
-    <HomePageHeader />
+    <div className='relative top-0 left-0'>
+    <HomePageHeader className=' top-0 left-0 w-screen'/>
     <Outlet />
     <Footer />
-    </>
+    </div>
   )
 }
 
