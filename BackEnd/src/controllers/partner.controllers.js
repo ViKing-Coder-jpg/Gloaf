@@ -1,4 +1,4 @@
-const {userProfile} = require('../db/MongoDB/index')
+const {restaurantProfile} = require('../db/MongoDB/index')
 const prismaC = require('@prisma/client');
 const { hashing } = require('../utils/bcryptor');
 const prisma = new prismaC.PrismaClient()
@@ -10,14 +10,14 @@ const partnerCreate = async (req,res)=>{
     }
     try{
     const hashedPassword = await hashing(Password);
-    const data=await prisma.user.create({data:{
+    const data=await prisma.restaurant.create({data:{
         Name:Name,
         Email:Email,
         Password:hashedPassword,
         Phone:Phone
     }});
-    await userProfile.create({
-        restaurantID: data.UserID,
+    await restaurantProfile.create({
+        restaurantID: data.RestaurantID,
         });
     }catch(err){
         console.log('Error in partnerCreate : \n',err)
@@ -28,6 +28,28 @@ const partnerCreate = async (req,res)=>{
     }
 }
 
+const partnerLoginSearch = async(req,res)=>{
+    const {Email,Password}=req.body;
+    if(!Email || !Password ){
+        return res.status(400).json({"Error":"Field not filled"})
+    }
+    try{
+        const data=await prisma.restaurant.findUnique({
+            where:{Email:Email},
+            select:{Email:true,Password:true}
+        })
+        if(!data){
+            return res.status(401).json({'message':'Email is not registered'})
+        }
+        const checkPassword=await dehashing(Password,data.Password)
+        if(!checkPassword){
+            return res.status(401).json({'message':'Incorrect Password'})
+        }
+    }catch(err){
+        console.log('Error in userLoginSearch : \n',err)
+        return res.status(500).json({ error: 'Internal Server Error' })
+    }
+}
 
 
 
@@ -36,5 +58,6 @@ const partnerCreate = async (req,res)=>{
 
 
 module.exports={
-    partnerCreate
+    partnerCreate,
+    partnerLoginSearch
 }

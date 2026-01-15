@@ -6,6 +6,7 @@ const cookieParser= require('cookie-parser');
 
 
 const signupRouter = require('./routes/signup.routes');
+const loginRouter = require('./routes/login.routes');
 
 
 const app=express()
@@ -18,5 +19,6 @@ app.use(cors(
 ))
 app.use(cookieParser())
 app.use('/api/signup',signupRouter)
+app.use('/api/login',loginRouter)
 
 module.exports={app}

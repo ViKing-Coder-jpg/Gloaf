@@ -26,7 +26,7 @@ const jwtVerifyAccess = async (req, res, next) => {
 
     const verified = await jwt.verify(token, process.env.JWT_SECRET_ACCESS);
     if (!verified) {
-      res.status(401).json({ message: "User unauthorized" });
+      res.status(401).json({ message: "User unauthorized, create new access Token" });
     }
     next();
   } catch (err) {
@@ -46,7 +46,7 @@ const jwtVerifyRefresh = async (req, res, next) => {
 
     const verified = await jwt.verify(token, process.env.JWT_SECRET_REFRESH);
     if (!verified) {
-      res.status(401).json({ message: "User unauthorized" });
+      res.status(401).json({ message: "User unauthorized , Login again" });
     }
     next();
   } catch (err) {
