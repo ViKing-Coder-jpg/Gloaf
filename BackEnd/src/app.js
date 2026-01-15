@@ -1,10 +1,11 @@
 const express=require('express')
 const cors = require('cors')
 const dotenv = require('dotenv');
+const cookieParser= require('cookie-parser');
 
 
 
-const userRouter = require("./routes/user.routes");
+const signupRouter = require('./routes/signup.routes');
 
 
 const app=express()
@@ -15,6 +16,7 @@ app.use(cors(
         origin: process.env.CORS_ORIGIN
     }
 ))
-app.use('/',userRouter)
+app.use(cookieParser())
+app.use('/api/signup',signupRouter)
 
 module.exports={app}

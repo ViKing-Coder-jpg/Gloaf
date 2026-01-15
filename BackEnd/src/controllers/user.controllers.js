@@ -23,7 +23,6 @@ const userCreate = async (req,res)=>{
         userID: data.UserID,
         Phone: Phone ? [Phone] : []
         });
-    res.status(201).json({"message":"User was Created Successfully"});
     }catch(err){
         console.log('Error in userCreate : \n',err)
         if (err.code === 'P2002') {

@@ -1,32 +1,60 @@
 const jwt = require("jsonwebtoken");
-const jwtsign = async (req, res) => {
+const dotenv = require("dotenv");
+dotenv.config();
+const jwtsign = async (req, res,time,option) => {
   try {
-    const token = await jwt.sign({}, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.status(201).json({'message':'Token Made Successfully','token':token})
+    const token = await jwt.sign(
+      { Email: req.body.Email, type: req.body.type },
+      option=='a'?process.env.JWT_SECRET_ACCESS:process.env.JWT_SECRET_REFRESH,
+      { expiresIn: time }
+    );
+    return token;
   } catch (err) {
-    console.log("err in jwt sign");
+    console.log("error in jwt sign", err);
   }
 };
-const jwtverify = async (req, res, next) => {
+const jwtVerifyAccess = async (req, res, next) => {
   try {
-    const header = req.headers.authorization;
-    if (!header) {
-      return res.status(400).send("header not found");
+    const cookie = req.cookie.accessToken;
+    if (!cookie) {
+      return res.status(400).send("cookie not found");
     }
-    const token = header.split(" ")[1];
+    const token = cookie.split(" ")[1];
     if (!token) {
       return res.status(400).send("token not found");
     }
 
-    const verified = await jwt.verify(token, process.env.JWT_SECRET);
-    if(!verified){
-        res.status(401).json({'message':'User unauthorized'})
+    const verified = await jwt.verify(token, process.env.JWT_SECRET_ACCESS);
+    if (!verified) {
+      res.status(401).json({ message: "User unauthorized" });
     }
     next();
   } catch (err) {
-    console.log("ërr is jwt verify");
+    console.log("Error is jwt acess verify", err);
   }
 };
-module.exports={
-    jwtsign,jwtverify
-}
+const jwtVerifyRefresh = async (req, res, next) => {
+  try {
+    const cookie = req.cookie.refreshToken;
+    if (!cookie) {
+      return res.status(400).send("cookie not found");
+    }
+    const token = cookie.split(" ")[1];
+    if (!token) {
+      return res.status(400).send("token not found");
+    }
+
+    const verified = await jwt.verify(token, process.env.JWT_SECRET_REFRESH);
+    if (!verified) {
+      res.status(401).json({ message: "User unauthorized" });
+    }
+    next();
+  } catch (err) {
+    console.log("Error is jwt refresh verify", err);
+  }
+};
+module.exports = {
+  jwtsign,
+  jwtVerifyAccess,
+  jwtVerifyRefresh
+};

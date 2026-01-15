@@ -5,8 +5,16 @@ const {app}=require('./app.js')
 
 
 dotenv.config();
-await connection();
-
+const startServer = async () => {
+  try {
+    await connection();
+    console.log("DB connected");
+  } catch (err) {
+    console.error("DB connection failed", err);
+    process.exit(1);
+  }
+};
+startServer()
 
 app.listen(process.env.PORT||3000,()=>{
     console.log(`Server is running in ${process.env.PORT?process.env.PORT:3000}`)

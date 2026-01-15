@@ -65,7 +65,7 @@ model Restaurant {
   Password String
   Phone String
   status RestaurantStatus @default(CLOSED)
-  externalRef String
+  externalRef String?
   created_at DateTime @default(now())
 
   menu MenuItem[]
