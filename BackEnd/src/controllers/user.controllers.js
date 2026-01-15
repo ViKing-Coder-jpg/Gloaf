@@ -55,12 +55,20 @@ const userLoginSearch = async(req,res)=>{
     }
 }
 
-
+const deleteAllUser = async(req,res)=>{
+    try{
+        await prisma.user.deleteMany()
+        await userProfile.deleteMany()
+    }catch(err){
+        console.log('Error in delete all User',err)
+    }
+}
 
 
 
 
 module.exports={
     userCreate,
-    userLoginSearch
+    userLoginSearch,
+    deleteAllUser
 }

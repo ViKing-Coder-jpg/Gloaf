@@ -15,7 +15,7 @@ const jwtsign = async (req, res,time,option) => {
 };
 const jwtVerifyAccess = async (req, res, next) => {
   try {
-    const cookie = req.cookie.accessToken;
+    const cookie = req.cookies.accessToken;
     if (!cookie) {
       return res.status(400).send("cookie not found");
     }
@@ -35,7 +35,7 @@ const jwtVerifyAccess = async (req, res, next) => {
 };
 const jwtVerifyRefresh = async (req, res, next) => {
   try {
-    const cookie = req.cookie.refreshToken;
+    const cookie = req.cookies.refreshToken;
     if (!cookie) {
       return res.status(400).send("cookie not found");
     }

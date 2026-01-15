@@ -1,6 +1,6 @@
 const express =require('express')
-const {userCreate}=require('./user.controllers.js')
-const {partnerCreate}=require('./partner.controllers.js')
+const {userCreate,deleteAllUser}=require('./user.controllers.js')
+const {partnerCreate,deleteAllPartner}=require('./partner.controllers.js')
 const {jwtsign}=require('../utils/oauth.js')
 
 
@@ -28,7 +28,14 @@ const signupSSO = async (req,res) =>{
     }
 }
 
+const deleteAllSSO = async(req,res)=>{
+    await deleteAllPartner(req,res);
+    await deleteAllUser(req,res);
+    res.status(205).json({'message':'Data was erased successfully'})
+}
+
 module.exports={
     signupSSO,
+    deleteAllSSO
 
 }

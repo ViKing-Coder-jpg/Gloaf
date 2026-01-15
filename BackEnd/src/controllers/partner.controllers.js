@@ -51,7 +51,14 @@ const partnerLoginSearch = async(req,res)=>{
     }
 }
 
-
+const deleteAllPartner = async(req,res)=>{
+    try{
+        await prisma.user.deleteMany()
+        await restaurantProfile.deleteMany()
+    }catch(err){
+        console.log('Error in delete all User',err)
+    }
+}
 
 
 
@@ -59,5 +66,6 @@ const partnerLoginSearch = async(req,res)=>{
 
 module.exports={
     partnerCreate,
-    partnerLoginSearch
+    partnerLoginSearch,
+    deleteAllPartner
 }
