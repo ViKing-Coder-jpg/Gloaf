@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import GloafIcon from "../assets/Gloaf_icon.png";
 import { FaArrowRight } from "react-icons/fa";
 import GoogleIcon from "../assets/Google_icon.png";
 import ImageSlider from "../Components/Utilities/ImageSlider";
-import img1 from "../assets/Images/cookies.jpg";
-import img2 from "../assets/Images/croissant.jpg";
-import img3 from "../assets/Images/pizza.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { imageData } from "../utils/constants";
+import { signupPost } from "../Api/PostApi";
+
 
 const Signup = () => {
-  const imageData = [
-    {
-      imgKey: 1,
-      imgSrc: img1,
-      imgTitle:
-        "Food is not just fuel; it’s an experience that brings people together.",
-      imgText:
-        "Eating a balanced diet helps improve energy, immunity, and overall well-being.",
-    },
-    {
-      imgKey: 2,
-      imgSrc: img2,
-      imgTitle: "Good food is the foundation of genuine happiness.",
-      imgText:
-        "Fresh, locally sourced foods often retain more nutrients and better flavor.",
-    },
-    {
-      imgKey: 3,
-      imgSrc: img3,
-      imgTitle: "A meal shared is a memory made.",
-      imgText:
-        "Spices not only add flavor but also offer antioxidant and digestive benefits.",
-    },
-  ];
+  const [Email,setEmail]=useState('')
+  const [Name,setName]=useState('')
+  const [Phone,setPhone]=useState('')
+  const [Password,setPassword]=useState('')
+  const [type,setType]=useState('Customer')
+
+  const navigate=useNavigate()
+  const handleSubmit =async(e)=>{
+      e.preventDefault();
+      const data={
+        Email:Email,
+        Name:Name,
+        Phone:Phone,
+        Password:Password,
+        type:type,
+        accType:"EMAIL"
+      }
+      try{
+        await signupPost(data)
+        console.log('Signed up Successfully!')
+        type=="Customer"?navigate('/customer'):navigate('/partner')
+      }catch(err){
+        console.log('err in signup \n',err)
+      }
+
+  }
+  const handleGoogleOAuth = async()=>{
+
+  }
+
+
   return (
     <div className="bg-amber-300 h-screen m-0 p-0 flex flex-row font-[Poppins, sans-serif]">
       <div className="w-[55vw] m-0">
@@ -53,7 +60,7 @@ const Signup = () => {
             <p className="text-sm text-[#996842]">Good Food Starts Here.</p>
           </div>
           <div className="h-full m-0">
-            <form className="p-2">
+            <form className="p-2" onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <div className="flex flex-col space-y-1">
                   <label
@@ -67,6 +74,9 @@ const Signup = () => {
                     id="Name"
                     placeholder="Enter your full name"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    name="Name"
+                    value={Name}
+                    onChange={(e)=>setName(e.target.value)}
                     required
                   />
                 </div>
@@ -83,6 +93,9 @@ const Signup = () => {
                     id="Email"
                     placeholder="Enter your email"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    name="Email"
+                    value={Email}
+                    onChange={(e)=>setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -99,6 +112,9 @@ const Signup = () => {
                     id="Phone"
                     placeholder="Enter your phone number"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    name="Phone"
+                    value={Phone}
+                    onChange={(e)=>setPhone(e.target.value)}
                     required
                   />
                 </div>
@@ -115,6 +131,9 @@ const Signup = () => {
                     id="Password"
                     placeholder="Enter your password"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    name="Password"
+                    value={Password}
+                    onChange={(e)=>setPassword(e.target.value)}
                     required
                   />
                 </div>
@@ -128,12 +147,14 @@ const Signup = () => {
                   </label>
                   <select
                     id="Role"
-                    name="role"
+                    name="type"
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
                     defaultValue="customer"
+                    value={type}
+                    onChange={(e)=>setType(e.target.value)}
                   >
-                    <option value="customer">Customer</option>
-                    <option value="restaurant">Restaurant</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Restaurant">Restaurant</option>
                   </select>
                 </div>
 
@@ -156,14 +177,17 @@ const Signup = () => {
               <div className="flex items-center my-6">
                 <div className="grow h-px bg-[#e2c8b0]" />
                 <span className="px-4 text-sm text-[#a67c52] whitespace-nowrap">
-                  Or continue with
+                  Or continue as Customer with
                 </span>
                 <div className="grow h-px bg-[#e2c8b0]" />
               </div>
             </div>
             <div className="flex flex-row justify-center">
               <div className="bg-white border-[#e2c8b0] border h-9 w-80 rounded-md text-[#4D2308] hover:bg-[#F1B93D] hover:text-white transition ease-in-out duration-300">
-                <button className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer">
+                <button 
+                className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer"
+                onClick={handleGoogleOAuth}
+                >
                   <img
                     src={GoogleIcon}
                     alt="Google_Icon"
