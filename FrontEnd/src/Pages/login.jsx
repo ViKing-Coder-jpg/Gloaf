@@ -34,7 +34,7 @@ const Login = () => {
 
   }
   const handleGoogleOAuth = async()=>{
-
+        window.location.href="http://localhost:8000/api/auth/google/"
   }
 
   return (
