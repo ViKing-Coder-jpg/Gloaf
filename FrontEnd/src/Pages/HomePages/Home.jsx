@@ -14,7 +14,7 @@ const Home = () => {
       <div className='w-screen h-[50vh]'>
           <ChoiceGloaf />
       </div>
-      <div className='w-screen h-screen bg-blue-500'></div>
+      <div className='w-screen h-[93vh] bg-blue-500'></div>
       <div className='w-screen h-screen bg-pink-500'></div>
     </div>
   )

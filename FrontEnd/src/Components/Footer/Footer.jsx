@@ -1,6 +1,7 @@
 import React from 'react'
 import Gloaf_icon from '../../assets/Gloaf_icon.png'
 import { FaGlobe, FaRegComment } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -22,7 +23,7 @@ const Footer = () => {
           <div>
             <h4 className='text-sm font-semibold tracking-wide text-gray-800 uppercase mb-4'>Company</h4>
             <ul className='space-y-3 text-gray-600'>
-              <li>About Us</li>
+              <li className='hover:text-[#F1B93D] transition ease-in-out'><Link to='/about'>About Us</Link></li>
               <li>Careers</li>
               <li>Blog</li>
               <li>Press</li>
@@ -42,7 +43,7 @@ const Footer = () => {
           <div>
             <h4 className='text-sm font-semibold tracking-wide text-gray-800 uppercase mb-4'>Partner</h4>
             <ul className='space-y-3 text-gray-600'>
-              <li>Add your restaurant</li>
+              <li className='hover:text-[#F1B93D] transition ease-in-out'><Link to='/signup'>Add your restaurant</Link></li>
               <li>Become a rider</li>
               <li>Business</li>
             </ul>
@@ -50,7 +51,7 @@ const Footer = () => {
         </div>
 
         <div className='border-t border-[#ebe6da] mt-8 pt-6 flex items-center justify-between text-sm text-gray-500'>
-          <div>Made by Vinayak </div>
+          <div>Made by Vinayak 🧑🏻‍💻</div>
           <div className='text-gray-400'>English (US)</div>
         </div>
       </div>
@@ -59,3 +60,4 @@ const Footer = () => {
 }
 
 export default Footer
+

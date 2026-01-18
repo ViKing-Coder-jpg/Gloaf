@@ -1,6 +1,10 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
+const options = {
+  httpOnly: true,
+  secure: true,
+};
 const jwtsign = async (req, res,time,option) => {
   try {
     const token = await jwt.sign(
@@ -26,7 +30,9 @@ const jwtVerifyAccess = async (req, res, next) => {
 
     const verified = await jwt.verify(token, process.env.JWT_SECRET_ACCESS);
     if (!verified) {
-      res.status(401).json({ message: "User unauthorized, create new access Token" });
+      await jwtVerifyRefresh(req,res,next)
+      const acessToken = await jwtsign(req, res, "1d", "a");
+      res.cookie("acessToken", acessToken, options).json({message:'accessToken was made successfully!'})
     }
     next();
   } catch (err) {
@@ -46,7 +52,7 @@ const jwtVerifyRefresh = async (req, res, next) => {
 
     const verified = await jwt.verify(token, process.env.JWT_SECRET_REFRESH);
     if (!verified) {
-      res.status(401).json({ message: "User unauthorized , Login again" });
+      res.status(401).json({ message: "User unauthorized , Login again" }).clearCookie('refreshToken').clearCookie('accessToken').clearCookie('accountType').redirect(`${process.env.FRONTEND_URL}/login`);
     }
     next();
   } catch (err) {

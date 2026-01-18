@@ -12,8 +12,8 @@ const loginSSO = async (req, res) => {
   try {
     if (type == "Customer") {
       await userLoginSearch(req, res);
-      const acessToken = await jwtsign(req, res, "1h", "a");
-      const refreshToken = await jwtsign(req, res, "5d", "r");
+      const acessToken = await jwtsign(req, res, "1d", "a");
+      const refreshToken = await jwtsign(req, res, "10d", "r");
 
       res
         .status(200)
@@ -23,8 +23,8 @@ const loginSSO = async (req, res) => {
         .json({ message: "Customer was Loggedin Successfully" });
     } else {
       await partnerLoginSearch(req, res);
-      const acessToken = await jwtsign(req, res, "1h", "a");
-      const refreshToken = await jwtsign(req, res, "5d", "r");
+      const acessToken = await jwtsign(req, res, "1d", "a");
+      const refreshToken = await jwtsign(req, res, "10d", "r");
       res
         .status(200)
         .cookie("acessToken", acessToken, options)
