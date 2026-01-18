@@ -1,12 +1,17 @@
 import React from 'react'
 import ChoiceGloaf from './choiceGloaf'
+import IntroPage from './IntroPage'
+
 
 
 const Home = () => {
   return (
     <div>
-      <div className='w-screen h-screen bg-green-500'></div>
-      <div className='w-screen h-[60vh]'>
+
+      <div className='w-screen h-[93vh]'>
+        <IntroPage />
+      </div>
+      <div className='w-screen h-[50vh]'>
           <ChoiceGloaf />
       </div>
       <div className='w-screen h-screen bg-blue-500'></div>

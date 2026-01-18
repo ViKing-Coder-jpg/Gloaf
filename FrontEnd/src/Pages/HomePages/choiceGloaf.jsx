@@ -33,10 +33,10 @@ const ChoiceGloaf = () => {
 ];
   return (
     <div className=' flex flex-col gap-5 h-full w-full justify-center'>
-        <div className=' h-[10%] text-4xl p-5 font-medium'>
+        <div className=' h-[10%] text-4xl pl-20 p-5 font-medium'>
             <span>Why choose Gloaf ?</span>
         </div>
-        <div className=' h-[12%] pl-5 font-medium text-[#404662]'>
+        <div className=' h-[12%] pl-20 font-medium text-[#404662]'>
             <p>Gloaf is more than a platform—it’s a refined experience built around you.<br/>
 It connects you effortlessly to great food and trusted places with clarity and elegance.</p>
         </div>

@@ -36,7 +36,7 @@ const Signup = () => {
 
   }
   const handleGoogleOAuth = ()=>{
-      window.location.href="http://localhost:8000/api/auth/google/"
+      // window.location.href="http://localhost:8000/api/auth/google/"
   }
 
 
