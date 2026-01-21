@@ -27,14 +27,14 @@ const Login = () => {
       try{
         await loginPost(data)
         console.log('Logged in Successfully!')
-        type=="Customer"?navigate('/customer'):navigate('/partner')
+        type=="Customer"?navigate('/customer/home'):navigate('/partner/home')
       }catch(err){
         console.log('err in signup \n',err)
       }
 
   }
   const handleGoogleOAuth = async()=>{
-        // window.location.href="http://localhost:8000/api/auth/google/"
+        window.location.href="http://localhost:8000/api/auth/google/"
   }
 
   return (

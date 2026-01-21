@@ -5,13 +5,16 @@ import Login from './Pages/login.jsx'
 import Signup from './Pages/signup.jsx'
 import CustomerLayout from './Pages/Layouts/CustomerLayout.jsx'
 import HomeLayout from './Pages/Layouts/HomeLayout.jsx'
-import Home from './Pages/HomePages/Home.jsx'
-import About from './Pages/HomePages/About.jsx'
-import CustomerHome from './Pages/customer/CustomerHome.jsx'
+import Home from './Pages/Home/HomePage/Home.jsx'
+import About from './Pages/Home/AboutPage/About.jsx'
+import CustomerHome from './Pages/customer/Home/CustomerHome.jsx'
+import SearchPage from './Pages/customer/Search/SearchPage.jsx'
+import OrderPage from './Pages/customer/Orders/OrderPage.jsx'
 import PartnerLayout from './Pages/Layouts/PartnerLayout.jsx'
 import DashboardHome from './Pages/restaurant/PartnerHome.jsx'
 import Loading from './Pages/Loading.jsx'
 import { Suspense } from 'react'
+import ChefPage from './Pages/customer/Chef/ChefPage.jsx'
 
 
 
@@ -44,9 +47,21 @@ const router=createBrowserRouter([
         element:<CustomerLayout />,
         children:[
             {
-                path: '',
+                path: 'home',
                 element:<CustomerHome />
-            }
+            },
+            {
+                path:'collection',
+                element:<SearchPage />
+            },
+            {
+                path:'orders',
+                element: <OrderPage />
+            },
+            {
+                path:'chef',
+                element: <ChefPage />
+            },
         ]
     },
     {
@@ -54,7 +69,7 @@ const router=createBrowserRouter([
         element:<PartnerLayout />,
         children:[
             {
-                path: '',
+                path: 'home',
                 element:<DashboardHome />
             }
         ]

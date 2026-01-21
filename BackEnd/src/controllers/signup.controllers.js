@@ -2,11 +2,9 @@ const express = require("express");
 const { userCreate, deleteAllUser } = require("./user.controllers.js");
 const { partnerCreate, deleteAllPartner } = require("./partner.controllers.js");
 const { jwtsign } = require("../middlewares/oauth.js");
+const {options} = require('../constants.js')
 
-const options = {
-  httpOnly: true,
-  secure: true,
-};
+
 const signupSSO = async (req, res) => {
   const { type } = req.body;
   try {

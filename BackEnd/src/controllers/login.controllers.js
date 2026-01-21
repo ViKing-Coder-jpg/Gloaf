@@ -2,11 +2,10 @@ const express = require("express");
 const { userLoginSearch } = require("./user.controllers.js");
 const { partnerLoginSearch } = require("./partner.controllers.js");
 const { jwtsign } = require("../middlewares/oauth.js");
+const {options} = require('../constants.js')
 
-const options = {
-  httpOnly: true,
-  secure: true,
-};
+
+
 const loginSSO = async (req, res) => {
   const { type } = req.body;
   try {

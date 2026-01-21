@@ -1,22 +1,28 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const {options} = require('../constants.js')
 dotenv.config();
-const options = {
-  httpOnly: true,
-  secure: true,
-};
+
+
+
+
+
 const jwtsign = async (req, res,time,option) => {
   try {
+    console.log("inside jwt signing");
     const token = await jwt.sign(
       { Email: req.body.Email, type: req.body.type },
       option=='a'?process.env.JWT_SECRET_ACCESS:process.env.JWT_SECRET_REFRESH,
       { expiresIn: time }
     );
+    console.log('token was made')
     return token;
   } catch (err) {
     console.log("error in jwt sign", err);
   }
 };
+
+
 const jwtVerifyAccess = async (req, res, next) => {
   try {
     const cookie = req.cookies.accessToken;

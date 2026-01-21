@@ -5,7 +5,6 @@
 import { useState } from "react";
 import Gloaf_Icon from "../../assets/Gloaf_icon.png";
 
-console.log("ICON BACKGROUND RENDERED");
 
 const ICON_COUNT = 30;
 
