@@ -1,4 +1,4 @@
-const { jwtsign } = require("../middlewares/oauth.js");
+const { jwtsign, jwtVerifyAccess } = require("../middlewares/oauth.js");
 const passport = require("passport");
 const dotenv = require("dotenv");
 const {options} = require('../constants.js')
@@ -23,13 +23,9 @@ const signupGoogleCallback = (req, res, next) => {
       if (err || !user) {
         return res.status(401).json({ message: "Google auth failed" });
       }
-      console.log("hehehe");
-      const acessToken = await jwtsign(req, res, "1h", "a");
       const refreshToken = await jwtsign(req, res, "5d", "r");
-      console.log("acecestoke", acessToken, refreshToken);
       res
         .status(201)
-        .cookie("acessToken", acessToken, options)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", "Customer", options)
         .json({ message: "Customer was created Successfully By Google" })
@@ -38,7 +34,22 @@ const signupGoogleCallback = (req, res, next) => {
   )(req, res, next);
 };
 
+const getToken=async(req,res,next)=>{
+    const acessToken = await jwtsign(req, res, "1d", "a");
+    res.json({token:acessToken})
+}
+const checkToken=async(req,res,next)=>{
+  try{
+    await jwtVerifyAccess(req,res,next)
+    next()
+  }catch(err){
+    console.log('Error in check token')
+  }
+}
+
 module.exports = {
   signupGoogle,
   signupGoogleCallback,
+  getToken,
+  checkToken
 };

@@ -10,21 +10,17 @@ const signupSSO = async (req, res) => {
   try {
     if (type == "Customer") {
       await userCreate(req, res);
-      const acessToken = await jwtsign(req, res, "1d", "a");
       const refreshToken = await jwtsign(req, res, "10d", "r");
       res
         .status(201)
-        .cookie("acessToken", acessToken, options)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
         .json({ message: "Customer was created Successfully" });
     } else {
       await partnerCreate(req, res);
-      const acessToken = await jwtsign(req, res, "1d", "a");
       const refreshToken = await jwtsign(req, res, "10d", "r");
       res
         .status(201)
-        .cookie("acessToken", acessToken, options)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
         .json({ message: "Restaurant was created Successfully" });

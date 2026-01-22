@@ -25,7 +25,7 @@ const jwtsign = async (req, res,time,option) => {
 
 const jwtVerifyAccess = async (req, res, next) => {
   try {
-    const cookie = req.cookies.accessToken;
+    const cookie = req.body.token;
     if (!cookie) {
       return res.status(400).send("cookie not found");
     }
@@ -58,7 +58,7 @@ const jwtVerifyRefresh = async (req, res, next) => {
 
     const verified = await jwt.verify(token, process.env.JWT_SECRET_REFRESH);
     if (!verified) {
-      res.status(401).json({ message: "User unauthorized , Login again" }).clearCookie('refreshToken').clearCookie('accessToken').clearCookie('accountType').redirect(`${process.env.FRONTEND_URL}/login`);
+      res.status(401).json({ message: "User unauthorized , Login again" }).clearCookie('refreshToken').clearCookie('accountType').redirect(`${process.env.FRONTEND_URL}/login`);
     }
     next();
   } catch (err) {
