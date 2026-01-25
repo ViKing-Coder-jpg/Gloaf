@@ -9,8 +9,10 @@ dotenv.config();
 
 const jwtsign = async (req, res,time,option) => {
   try {
+    const email=req.body?req.body.Email:req.user.Email
+    const type=req.body?req.body.type:req.user.type
     const token = await jwt.sign(
-      { Email: req.body.Email, type: req.body.type },
+      { Email: email, type: type , createdAt:Date.now()},
       option=='a'?process.env.JWT_SECRET_ACCESS:process.env.JWT_SECRET_REFRESH,
       { expiresIn: time }
     );
