@@ -1,6 +1,9 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { Suspense } from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+
+
 import Login from './Pages/login.jsx'
 import Signup from './Pages/signup.jsx'
 import CustomerLayout from './Pages/Layouts/CustomerLayout.jsx'
@@ -13,9 +16,8 @@ import OrderPage from './Pages/customer/Orders/OrderPage.jsx'
 import PartnerLayout from './Pages/Layouts/PartnerLayout.jsx'
 import DashboardHome from './Pages/restaurant/PartnerHome.jsx'
 import Loading from './Pages/Loading.jsx'
-import { Suspense } from 'react'
 import ChefPage from './Pages/customer/Chef/ChefPage.jsx'
-
+// import ProtectedRoutes from '../ProtectedRoutes.jsx'
 
 
 

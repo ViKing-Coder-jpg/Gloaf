@@ -11,18 +11,22 @@ const signupSSO = async (req, res) => {
     if (type == "Customer") {
       await userCreate(req, res);
       const refreshToken = await jwtsign(req, res, "10d", "r");
+      const accessToken = await jwtsign(req, res, "1d", "a");
       res
         .status(201)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
+        .setHeader("Authorization", `Bearer ${accessToken}`)
         .json({ message: "Customer was created Successfully" });
     } else {
       await partnerCreate(req, res);
       const refreshToken = await jwtsign(req, res, "10d", "r");
+      const accessToken = await jwtsign(req, res, "1d", "a");
       res
         .status(201)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
+        .setHeader("Authorization", `Bearer ${accessToken}`)
         .json({ message: "Restaurant was created Successfully" });
     }
   } catch (err) {

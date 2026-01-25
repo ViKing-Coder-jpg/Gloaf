@@ -9,7 +9,6 @@ dotenv.config();
 
 const jwtsign = async (req, res,time,option) => {
   try {
-    console.log("inside jwt signing");
     const token = await jwt.sign(
       { Email: req.body.Email, type: req.body.type },
       option=='a'?process.env.JWT_SECRET_ACCESS:process.env.JWT_SECRET_REFRESH,
@@ -25,26 +24,27 @@ const jwtsign = async (req, res,time,option) => {
 
 const jwtVerifyAccess = async (req, res, next) => {
   try {
-    const cookie = req.body.token;
-    if (!cookie) {
-      return res.status(400).send("cookie not found");
-    }
-    const token = cookie.split(" ")[1];
+    const token = req.header.Authorization;
     if (!token) {
       return res.status(400).send("token not found");
     }
-
-    const verified = await jwt.verify(token, process.env.JWT_SECRET_ACCESS);
+    const extractedToken=token.split(" ")[1];
+    if (!extractedToken) {
+      return res.status(400).send("extracted token not found");
+    }
+    const verified = await jwt.verify(extractedToken, process.env.JWT_SECRET_ACCESS);
     if (!verified) {
       await jwtVerifyRefresh(req,res,next)
-      const acessToken = await jwtsign(req, res, "1d", "a");
-      res.cookie("acessToken", acessToken, options).json({message:'accessToken was made successfully!'})
+      const accessToken = await jwtsign(req, res, "1d", "a");
+      res.setHeader("Authorization", `Bearer ${accessToken}`).json({message:'accessToken was made successfully!'})
     }
     next();
   } catch (err) {
     console.log("Error is jwt acess verify", err);
   }
 };
+
+
 const jwtVerifyRefresh = async (req, res, next) => {
   try {
     const cookie = req.cookies.refreshToken;

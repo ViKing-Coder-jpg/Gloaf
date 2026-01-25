@@ -83,6 +83,7 @@ const userFindOrCreateGoogle = async (profile) => {
         userID: data.UserID,
       });
     }
+    return findUser?findUser:await prisma.user.findUnique({where: { Email: profile.emails[0].value, accType: "GOOGLE" },});
   } catch (error) {
     console.log("Error in Google create Or Find", error);
   }
