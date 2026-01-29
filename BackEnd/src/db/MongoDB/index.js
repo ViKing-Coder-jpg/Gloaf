@@ -44,7 +44,7 @@ const userProfile = mongoose.model("userProfile", userSchema);
 
 const restaurantSchema = new mongoose.Schema({
   restaurantID: Number,
-  menu: [{ menuItemID: Number, name: String, price: Number, imageURL: String }],
+  menu: [{ menuItemID: Number, name: String, price: Number, imageURL: String , tag:String}],
   rating: {
     average: {
       type: Number,

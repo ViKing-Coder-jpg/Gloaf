@@ -1,4 +1,5 @@
 import React from 'react'
+import { IconHolder } from './BasicUtils'
 
 const DescriptionCard = ({img,title,detail}) => {
   return (
@@ -11,3 +12,13 @@ const DescriptionCard = ({img,title,detail}) => {
 }
 
 export default DescriptionCard
+
+
+export const FilterCard =({img,bg,clr,text})=>{
+  return <>
+  <div className='h-[20vh] w-[15vw] shadow-lg bg-white rounded-2xl flex flex-col justify-center items-center gap-2 hover:cursor-pointer hover:scale-120 transition ease-in-out duration-300'>
+    <IconHolder img={img} size="100px" bg={bg} border={clr} ic={clr}/>
+    <span className='text-[#4e2307] font-bold'>{text}</span>
+  </div>
+  </>
+}

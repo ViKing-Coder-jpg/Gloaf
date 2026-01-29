@@ -1,5 +1,5 @@
 import React from 'react'
-import DescriptionCard from '../../../Components/Utilities/DescriptionCard'
+import DescriptionCard from '../../../Components/Utilities/Cards'
 import { FaShop } from "react-icons/fa6";
 import { MdDeliveryDining } from "react-icons/md";
 import { MdDesktopWindows } from "react-icons/md";

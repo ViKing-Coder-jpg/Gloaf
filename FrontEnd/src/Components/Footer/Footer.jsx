@@ -2,6 +2,7 @@ import React from 'react'
 import Gloaf_icon from '../../assets/Gloaf_icon.png'
 import { FaGlobe, FaRegComment } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { Logo } from '../Utilities/BasicUtils'
 
 const Footer = () => {
   return (
@@ -9,9 +10,8 @@ const Footer = () => {
       <div className='bg-white/0 rounded-xl shadow-sm p-8'>
         <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
           <div className='space-y-4'>
-            <div className='flex items-center gap-3'>
-              <img src={Gloaf_icon} alt='Gloaf' className='h-10 w-10 object-contain' />
-              <h3 className='text-xl font-semibold'>Gloaf</h3>
+            <div >
+              <Logo />
             </div>
             <p className='text-gray-600 leading-relaxed'>Delivering warmth and flavor to your neighborhood, one order at a time.</p>
             <div className='flex items-center gap-4 text-gray-500'>

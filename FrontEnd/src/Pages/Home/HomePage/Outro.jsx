@@ -11,7 +11,7 @@ const Outro = () => {
       <div className="relative flex flex-col gap-12">
         <div className="absolute left-6 top-0 h-full w-px bg-yellow-300" />
 
-        <div className="flex gap-6 items-start ">
+        <div className="flex gap-6 items-start hover:scale-130 ease-in-out transition duration-300">
           <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400 text-white z-10">
             <FaSearch size={22} />
           </div>
@@ -25,7 +25,7 @@ const Outro = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-6 items-start">
+        <div className="flex gap-6 items-start hover:scale-130 ease-in-out transition duration-300">
           <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 text-white bg-yellow-400 z-10">
             <FaShoppingCart size={22} />
           </div>
@@ -40,7 +40,7 @@ const Outro = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 items-start">
+        <div className="flex gap-6 items-start hover:scale-130 ease-in-out transition duration-300">
           <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 text-white bg-yellow-400 z-10">
             <FaUtensils size={22} />
           </div>

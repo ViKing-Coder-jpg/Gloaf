@@ -76,7 +76,7 @@ model MenuItem {
   ItemID Int @id @default(autoincrement())
   RestaurantID Int
   restaurant Restaurant @relation(fields: [RestaurantID], references: [RestaurantID])
-
+  Tag String
   ItemName String
   ItemPrice Int
   isAvailable Availability

@@ -14,9 +14,15 @@ import CustomerHome from './Pages/customer/Home/CustomerHome.jsx'
 import SearchPage from './Pages/customer/Search/SearchPage.jsx'
 import OrderPage from './Pages/customer/Orders/OrderPage.jsx'
 import PartnerLayout from './Pages/Layouts/PartnerLayout.jsx'
-import DashboardHome from './Pages/restaurant/PartnerHome.jsx'
+import DashboardHome from './Pages/restaurant/Home/PartnerHome.jsx'
 import Loading from './Pages/Loading.jsx'
 import ChefPage from './Pages/customer/Chef/ChefPage.jsx'
+import Menu from './Pages/restaurant/Menu/Menu.jsx'
+import Order from './Pages/restaurant/Orders/Order.jsx'
+import Review from './Pages/restaurant/Review/Review.jsx'
+import Setting from './Pages/restaurant/Settings/Setting.jsx'
+import Info from './Pages/restaurant/Analytics/Info.jsx'
+import Notifications from './Pages/restaurant/Notifications/Notifications.jsx'
 // import ProtectedRoutes from '../ProtectedRoutes.jsx'
 
 
@@ -73,7 +79,32 @@ const router=createBrowserRouter([
             {
                 path: 'home',
                 element:<DashboardHome />
-            }
+            },
+            {
+                path: 'menu',
+                element:<Menu />
+            },
+            {
+                path: 'order',
+                element:<Order />
+            },
+            {
+                path: 'review',
+                element:<Review />
+            },
+            {
+                path: 'settings',
+                element:<Setting />
+            },
+            {
+                path: 'info',
+                element:<Info />
+            },
+            {
+                path: 'alert',
+                element:<Notifications />
+            },
+            
         ]
     },
 ])
