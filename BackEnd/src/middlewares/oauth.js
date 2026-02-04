@@ -26,9 +26,31 @@ const jwtsign = async (req, res,time,option) => {
 
 const jwtVerifyAccess = async (req, res, next) => {
   try {
-    const token = req.header.Authorization;
+    const token = req.headers.authorization;
     if (!token) {
-      return res.status(400).send("token not found");
+      return res.status(400).send("token babu not found");
+    }
+    const extractedToken=token.split(" ")[1];
+    if (!extractedToken) {
+      return res.status(400).send("extracted token not found");
+    }
+    const verified = await jwt.verify(extractedToken, process.env.JWT_SECRET_ACCESS);
+    if (!verified) {
+      await jwtVerifyRefresh(req,res,next)
+      const accessToken = await jwtsign(req, res, "1d", "a");
+      res.setHeader("Authorization", `Bearer ${accessToken}`).json({message:'accessToken was made successfully!'})
+    }
+    res.status(200).json({message:"Token is verified by backend"})
+  } catch (err) {
+    console.log("Error is jwt acess verify", err);
+  }
+};
+
+const jwtVerifyAccessMW = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(400).send("token babu not found");
     }
     const extractedToken=token.split(" ")[1];
     if (!extractedToken) {
@@ -50,6 +72,7 @@ const jwtVerifyAccess = async (req, res, next) => {
 const jwtVerifyRefresh = async (req, res, next) => {
   try {
     const cookie = req.cookies.refreshToken;
+
     if (!cookie) {
       return res.status(400).send("cookie not found");
     }
@@ -70,5 +93,6 @@ const jwtVerifyRefresh = async (req, res, next) => {
 module.exports = {
   jwtsign,
   jwtVerifyAccess,
+  jwtVerifyAccessMW,
   jwtVerifyRefresh
 };

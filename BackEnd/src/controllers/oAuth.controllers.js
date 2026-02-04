@@ -16,10 +16,8 @@ const signupGoogleCallback = async(req,res,next) => {
         .status(201)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", "Customer", options)
-        .setHeader("Authorization", `Bearer ${accessToken}`)
-        .redirect(`http://localhost:5173/customer/home`);
+        .redirect(`http://localhost:5173/customer/home?accessToken=${accessToken}`);
 }
-
 
 module.exports = {
   signupGoogle,

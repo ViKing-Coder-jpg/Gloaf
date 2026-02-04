@@ -5,7 +5,7 @@ import Gloaf_icon from '../../assets/Gloaf_icon.png'
 import { MdShoppingBasket } from "react-icons/md";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-const CustomerHeader = () => {
+const CustomerHeader = ({Name="Customer Name",miniLocation="Pune, Maharashtra"}) => {
   return (
     <header className='top-0 left-0 sticky z-100'>
     <div className='bg-[rgba(255,251,242,0.76)] flex justify-center items-center rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[1.8px] border border-[rgba(255,251,242,0.84)]'>
@@ -40,20 +40,26 @@ const CustomerHeader = () => {
           </ul>
       </div>
       <div className='h-full w-[28%] flex justify-evenly items-end p-3'>
+        <Link to="address">
         <div className='bg-white w-42 h-12 rounded-full border-[#e6dacf] border flex'>
             <div className='h-full w-[20%] flex justify-center items-center'>
               <FaMapMarkerAlt className=' h-[50%] w-[50%] text-[#52290b] object-cover'/>
             </div>
             <div className='h-full w-[80%] flex justify-center items-center'>
-              <span className=' text-sm'>Pune, Maharashtra</span>
+              <span className=' text-sm'>{miniLocation}</span>
             </div>
         </div>
+        </Link>
+        <Link to="cart">
         <div className='bg-[#ffedd6] w-12 h-12 rounded-full flex justify-center items-center '>
           <MdShoppingBasket className='h-[70%] w-[70%] object-cover text-[#bd702d]'/>
         </div>
+        </Link>
+        <Link to="profile">
         <div className='bg-[#fceccc] w-12 h-12 rounded-full border-[#fae0a5] border flex justify-center items-center text-[#52290b]'>
-          <span></span>
+          <span>{Name.split(" ").map((ele)=>ele[0]).join("")}</span>
         </div>
+        </Link>
       </div>
     </div>
   </header>

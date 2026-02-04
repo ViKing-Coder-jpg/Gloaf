@@ -3,7 +3,7 @@ import GloafIcon from "../assets/Gloaf_icon.png";
 import { FaArrowRight } from "react-icons/fa";
 import GoogleIcon from "../assets/Google_icon.png";
 import ImageSlider from "../Components/Utilities/ImageSlider";
-import { imageData } from "../utils/constants";
+import { baseServerURL, imageData } from "../utils/constants";
 import { Link,useNavigate} from "react-router-dom";
 import { loginPost } from "../Api/PostApi";
 
@@ -25,16 +25,16 @@ const Login = () => {
         accType:"EMAIL"
       }
       try{
-        await loginPost(data)
+        const res=await loginPost(data)
         console.log('Logged in Successfully!')
-        type=="Customer"?navigate('/customer/home'):navigate('/partner/home')
+        type=="Customer"?navigate(`/customer/home?accessToken=${res.data.accessToken}`):navigate(`/partner/home?accessToken=${res.data.accessToken}`)
       }catch(err){
         console.log('err in signup \n',err)
       }
 
   }
   const handleGoogleOAuth = async()=>{
-        window.location.href="http://localhost:8000/api/auth/google/"
+        window.location.href=`${baseServerURL}/auth/google/`
   }
 
   return (

@@ -10,6 +10,6 @@ export const loginPost=(data)=>{
 export const signupPost=(data)=>{
     return api.post('/signup/sso',data)
 }
-export const checkToken=(data)=>{
-    return api.post('/auth/checkToken',data)
+export const checkToken=(token)=>{
+    return api.post('auth/',token)
 }

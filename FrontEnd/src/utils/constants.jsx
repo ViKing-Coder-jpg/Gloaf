@@ -27,9 +27,9 @@ export const imageData = [
         "Spices not only add flavor but also offer antioxidant and digestive benefits.",
     },
   ];
-
+export const baseServerURL="http://localhost:8000/api"
 
 export const api = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: baseServerURL ,
     withCredentials: true 
 })

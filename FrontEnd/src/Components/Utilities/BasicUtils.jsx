@@ -62,3 +62,21 @@ export const IconHolder=({img,bg,border,ic,size="48px"})=>{
             {img}
           </div>
 }
+
+export const SearchBar=()=>{
+  return <div className='flex bg-white rounded-xl w-[80vh] h-[6vh] shadow-lg'>
+              <div className='h-full w-[5%] flex justify-center items-center text-[#4D2308]'>
+                  <FaSearch />
+              </div>
+              <div className='h-full w-[82%] flex justify-center items-center'>
+                   <input type="text" id="Search" name="Search" placeholder="Search for food, coffee or restaurant..." className="block w-full  py-2 bg-white text-gray-900 placeholder-gray-400 h-full focus:outline-0"/>
+              </div>
+              <div className='flex justify-center items-center'>
+                  <div className="bg-[#F1B93D] h-[90%] w-[10vh] rounded-xl text-[#4D2308]  hover:text-white transition ease-in-out duration-300">
+                  <button type="submit" className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer">
+                      <span>Search</span>
+                  </button>
+                  </div>
+              </div>
+              </div>
+}

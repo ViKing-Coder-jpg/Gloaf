@@ -2,5 +2,5 @@ import { api } from "../utils/constants"
 
 
 export const getToken=()=>{
-    return api.get('/auth/token')
+    return api.get('auth/')
 }

@@ -96,8 +96,8 @@ const FilterFood = () => {
         </div>
         <div className='w-full overflow-x-auto overflow-y-hidden'>
         <div className='inline-flex space-x-4 scroll-smooth w-fit p-4'>
-            {FileterOptionArray.map((ele)=>{
-                return <FilterCard img={ele.img} clr={ele.clr} bg={ele.bg} text={ele.name}/>
+            {FileterOptionArray.map((ele,key)=>{
+                return <FilterCard img={ele.img} clr={ele.clr} bg={ele.bg} text={ele.name} key={key}/>
             })}
 
         </div>

@@ -16,8 +16,7 @@ const signupSSO = async (req, res) => {
         .status(201)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
-        .setHeader("Authorization", `Bearer ${accessToken}`)
-        .json({ message: "Customer was created Successfully" });
+        .json({ message: "Customer was Signed up Successfully" ,"accessToken":`${accessToken}`});
     } else {
       await partnerCreate(req, res);
       const refreshToken = await jwtsign(req, res, "10d", "r");
@@ -26,8 +25,7 @@ const signupSSO = async (req, res) => {
         .status(201)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
-        .setHeader("Authorization", `Bearer ${accessToken}`)
-        .json({ message: "Restaurant was created Successfully" });
+        .json({ message: "Restaurant was Signed up Successfully" ,"accessToken":`${accessToken}`});
     }
   } catch (err) {
     console.log("Error in signupSSO controller", err);

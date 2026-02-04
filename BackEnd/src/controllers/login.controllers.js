@@ -18,8 +18,7 @@ const loginSSO = async (req, res) => {
         .status(200)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
-        .setHeader("Authorization", `Bearer ${accessToken}`)
-        .json({ message: "Customer was Loggedin Successfully" });
+        .json({ message: "Customer was Loggedin Successfully" ,"accessToken":`${accessToken}`});
     } else {
       await partnerLoginSearch(req, res);
       const refreshToken = await jwtsign(req, res, "10d", "r");
@@ -28,8 +27,7 @@ const loginSSO = async (req, res) => {
         .status(200)
         .cookie("refreshToken", refreshToken, options)
         .cookie("accountType", type, options)
-        .setHeader("Authorization", `Bearer ${accessToken}`)
-        .json({ message: "Restaurant was Loggedin Successfully" });
+        .json({ message: "Restaurant was Loggedin Successfully" ,"accessToken":`${accessToken}`});
     }
   } catch (err) {
     console.log("Error in loginSSO controller", err);

@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import GoogleIcon from "../assets/Google_icon.png";
 import ImageSlider from "../Components/Utilities/ImageSlider";
 import { Link, useNavigate } from "react-router-dom";
-import { imageData } from "../utils/constants";
+import { baseServerURL, imageData } from "../utils/constants";
 import { signupPost } from "../Api/PostApi";
 
 
@@ -27,16 +27,16 @@ const Signup = () => {
         accType:"EMAIL"
       }
       try{
-        await signupPost(data)
+        const res=await signupPost(data)
         console.log('Signed up Successfully!')
-        type=="Customer"?navigate('/customer/home'):navigate('/partner/home')
+        type=="Customer"?navigate(`/customer/home?accessToken=${res.data.accessToken}`):navigate(`/partner/home?accessToken=${res.data.accessToken}`)
       }catch(err){
         console.log('err in signup \n',err)
       }
 
   }
   const handleGoogleOAuth = ()=>{
-      window.location.href="http://localhost:8000/api/auth/google/"
+      window.location.href=`${baseServerURL}/auth/google/`
   }
 
 
