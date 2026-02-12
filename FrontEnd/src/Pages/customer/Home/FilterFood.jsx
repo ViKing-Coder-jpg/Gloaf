@@ -91,11 +91,11 @@ const FileterOptionArray=[
 const FilterFood = () => {
   return (
     <div>
-        <div className='m-6 flex'>
-            <div className='text-[#4e2307] w-[50%] h-[5vh] text-2xl font-bold'><span>Explore Cuisines</span></div>
+        <div className='m-6 flex '>
+            <div className='text-[#4e2307] w-[50%] h-[5vh] text-3xl font-medium'><span>Explore Cuisines</span></div>
         </div>
-        <div className='w-full overflow-x-auto overflow-y-hidden'>
-        <div className='inline-flex space-x-4 scroll-smooth w-fit p-4'>
+        <div className='w-full h-[95vh] overflow-x-auto overflow-y-hidden '>
+        <div className='inline-flex space-x-4 scroll-smooth w-fit h-full p-7 gap-4'>
             {FileterOptionArray.map((ele,key)=>{
                 return <FilterCard img={ele.img} clr={ele.clr} bg={ele.bg} text={ele.name} key={key}/>
             })}

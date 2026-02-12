@@ -56,9 +56,9 @@ export const  router=createBrowserRouter([
     {
         path:'/customer',
         element:
-            <AuthProvider >
+            // <AuthProvider >
                 <CustomerLayout />
-                </AuthProvider>
+                // </AuthProvider>
             ,
         errorElement:<ErrorPage/>,
         children:[

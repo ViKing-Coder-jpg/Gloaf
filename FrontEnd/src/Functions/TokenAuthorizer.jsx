@@ -22,19 +22,17 @@ const AuthProvider = ({ children }) => {
 
         api.defaults.headers.common["Authorization"] = `Bearer ${nextToken}`;
         localStorage.setItem('accessToken', nextToken);
-        try{
+        
         checkToken(nextToken).then((res) => {
             const newToken=res.headers.Authorization
             if(newToken){
             const newExtractedToken=newToken.split(' ')[1];
             setToken(prev => (prev === newExtractedToken)&& newExtractedToken ? prev : newExtractedToken);}
         }).catch((err) => {
-            console.log("got err",err)
-        });}catch(err){
-            const error = new Error("Unauthorized");
-            error.status = 401; 
+            const error = new Error(err.response.statusText);
+            error.status = err.response.status; 
             throw error;
-        }
+        });
         if (paramToken) {
         window.history.replaceState({}, document.title, window.location.pathname);
         }
@@ -56,8 +54,8 @@ const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const auth=useContext(AuthContext);
   if(!auth){
-    const error = new Error("Token not Found");
-    error.status = 404; 
+    const error = new Error("Unauthorized");
+    error.status = 401; 
     throw error;
   }
   return auth

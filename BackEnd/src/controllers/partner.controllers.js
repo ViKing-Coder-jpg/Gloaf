@@ -62,6 +62,14 @@ const deleteAllPartner = async (req, res) => {
   }
 };
 
+const partnerData=(req,res)=>{
+  try{
+    
+  }catch(err){
+    console.log('Error in partnerData',err)
+  }
+}
+
 module.exports = {
   partnerCreate,
   partnerLoginSearch,

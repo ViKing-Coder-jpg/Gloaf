@@ -42,7 +42,8 @@ const jwtVerifyAccess = async (req, res, next) => {
     }
     res.status(200).json({message:"Token is verified by backend"})
   } catch (err) {
-    console.log("Error is jwt acess verify", err);
+    return res.status(401).json({message:"Unauthorized"})
+    
   }
 };
 
