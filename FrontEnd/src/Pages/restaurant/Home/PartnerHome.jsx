@@ -5,7 +5,7 @@ import Overview3 from './Overview3'
 
 const PartnerHome = () => {
   return (
-    <div className='p-5 flex flex-col '>
+    <div className='p-5 flex flex-col gap-4'>
       
       <div><Overview1/></div>
       <div><Overview2/></div>

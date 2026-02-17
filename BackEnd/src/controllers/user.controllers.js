@@ -88,7 +88,9 @@ const userFindOrCreateGoogle = async (profile) => {
     console.log("Error in Google create Or Find", error);
   }
 };
-const findUserData = async (UserId,{Name,Email,Phone,address},req,res) =>{
+const findUserData = async (req,res) =>{
+  const userID=req.params.UserId
+  
   if(Name){
     const data= prisma.user.findUnique({
       where:{UserId:UserId},

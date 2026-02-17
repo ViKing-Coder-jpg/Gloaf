@@ -1,6 +1,10 @@
 import React from 'react'
-import { IconHolder } from './BasicUtils'
-import { FaClock, FaFish, FaStar } from 'react-icons/fa'
+import { IconHolder, NormalButton } from './BasicUtils'
+import { FaArrowRight, FaClock, FaFish, FaStar } from 'react-icons/fa'
+import GloafIcon from '../../assets/Gloaf_icon.png'
+import { Link } from 'react-router-dom'
+import { FaBowlFood } from 'react-icons/fa6'
+import { BsGraphUp, BsReceipt } from 'react-icons/bs'
 
 const DescriptionCard = ({img,title,detail}) => {
   return (
@@ -90,4 +94,69 @@ export const RestroCard =({data={title:"Sunny Snacks",rating:4.7,tags:["Snacks",
         </div>
     </div>
     </>
+  }
+  export const MenuCard=({activeMenu=0})=>{
+    return <>
+    <div className='relative bg-[#4e2307] h-[18vh] w-[20vw] rounded-2xl shadow-xl pl-3'>
+        <div className='absolute z-0 w-full h-full flex items-center justify-end-safe pr-20'>
+          <img src={GloafIcon} className='opacity-30 rotate-25 '/>
+        </div>
+        <div className='relative z-10 w-full h-full flex flex-col justify-evenly'>
+          <div className='text-[#f2ba58] font-medium flex flex-col  gap-4' >
+            <p className=' text-lg '>Active Menu Items</p>
+            <span className=' text-4xl '>{activeMenu}</span>
+            <Link to='/partner/menu'>
+            <div className='p-2 bg-[#f2ba58] rounded-full max-w-[50%] flex items-center gap-2 text-[#4e2307]'>
+              Change Items { <FaArrowRight/>}
+            </div>
+            </Link>
+          </div>
+        </div>
+    </div>
+    </>
+  }
+
+  export const LiveOrderCard=()=>{
+    return <>
+    <div className='w-[62vw] h-[40vh] bg-white rounded-2xl shadow-xl'>
+        <div className='w-full h-[15%] text-[#4e2307] flex  px-4 items-center justify-between'>
+          <div className='text-xl font-medium flex items-center gap-3'>{<FaBowlFood/>}Live Orders</div>
+          <Link to='/partner/order' ><div className='text-[#bb702e] p-2 rounded-full  hover:bg-[#fffbf2] hover:text-[#f2ba58] transition ease-in-out duration-300 flex gap-2 items-center cursor-pointer'>View All {<FaArrowRight/>}</div></Link>
+        </div>
+        <div className='w-full h-[10%] bg-[#fffbf2] text-[#b38e6e] '></div>
+        <div></div>
+
+
+
+    </div>
+    </>
+  }
+  
+  export const MenuAdderCard=()=>{
+    return <>
+    <div className='w-[20vw] h-[40vh] bg-white rounded-2xl shadow-xl'>
+      <div className='w-full h-[15%] text-[#4e2307] flex  px-4 items-center justify-between'>
+          <div className='text-xl font-medium flex items-center gap-3'>{<BsReceipt/>}Top Orders</div>
+      </div>
+      <div></div>
+      <div className='w-full h-[20%] flex items-center justify-center'>
+        <div >
+          <NormalButton link='/partner/menu' write='Manage Full Menu' padding='10px' />
+        </div>
+      </div>
+    
+    </div>
+    </>
+  }
+
+  export const SalesPerformanceCard=()=>{
+    return <div className='h-[30vh] w-[62vw] bg-white rounded-2xl shadow-xl'>
+        <div className='w-full h-[15%] text-[#4e2307] flex  px-4 items-center justify-between'>
+          <div className='text-xl font-medium flex items-center gap-3'>{<BsGraphUp/>}This Week Sales</div>
+          <Link to='/partner/info' ><div className='text-[#bb702e] p-2 rounded-full  hover:bg-[#fffbf2] hover:text-[#f2ba58] transition ease-in-out duration-300 flex gap-2 items-center cursor-pointer'>See Stats {<FaArrowRight/>}</div></Link>
+        </div>
+        <div>
+
+        </div>
+    </div>
   }

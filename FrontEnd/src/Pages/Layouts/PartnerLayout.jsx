@@ -6,7 +6,7 @@ import PartnerSidebar from '../../Components/SideBar/PartnerSidebar'
 
 const PartnerLayout = () => {
   return (
-    <>
+    <div className='overflow-hidden'>
     <div className='flex'>  
     <div>
       <PartnerSidebar />
@@ -17,7 +17,7 @@ const PartnerLayout = () => {
     </div>
     </div>
     <Footer />
-    </>
+    </div>
   )
 }
 

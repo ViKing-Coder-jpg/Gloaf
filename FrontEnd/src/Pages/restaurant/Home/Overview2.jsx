@@ -1,8 +1,12 @@
 import React from 'react'
+import { LiveOrderCard, MenuAdderCard } from '../../../Components/Utilities/Cards'
 
 const Overview2 = () => {
   return (
-    <div>Overview2</div>
+    <div className='flex gap-4'>
+      <LiveOrderCard/>
+      <MenuAdderCard />
+    </div>
   )
 }
 

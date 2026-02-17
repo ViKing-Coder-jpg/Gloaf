@@ -20,10 +20,10 @@ export const GlowButton = ({ link, write, img, height, width ,clickHandler}) => 
   );
 };
 
-export const NormalButton = ({ link, write, img, height, width,clickHandler }) => {
+export const NormalButton = ({ link, write, img, height, width,padding,clickHandler }) => {
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-[#F1B93D] rounded-md text-[#4D2308]  hover:text-white transition ease-in-out duration-300" style={{height:height,width:width}}>
+      <div className={`bg-[#F1B93D] rounded-md text-[#4D2308]  hover:text-white transition ease-in-out duration-300 h-[${height}] w-[${width}] p-[${padding}] `} >
         {link ? ( <Link to={link} className="h-full w-full flex items-center justify-center gap-2">{img} <span>{write}</span></Link>) :(<button className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer" onClick={clickHandler}>
           <span>{write}</span>
           {img}
@@ -34,7 +34,7 @@ export const NormalButton = ({ link, write, img, height, width,clickHandler }) =
 };
 export const SidebarButton = ({ link, write, img, height, width,clickHandler })=>{
     return <div className="hover:bg-[#5f3921] text-[#b19f94] hover:text-[#f2b93d] rounded-lg transition ease-in-out duration-300" style={{height:height,width:width}}>
-             {link ? ( <Link to={link} className="h-full w-full flex items-center justify-start gap-2 pl-2">{img} <span>{write}</span></Link>) :(<button className="h-full w-full font-medium flex items-center justify-start gap-2 cursor-pointer pl-2" onClick={clickHandler}>
+             {link ? ( <NavLink to={link} className={({isActive})=>isActive?`h-full w-full flex items-center justify-start gap-2 pl-2 text-[#f2b93d] bg-[#5f3921] rounded-lg`:`h-full w-full flex items-center justify-start gap-2 pl-2`}>{img} <span>{write}</span></NavLink>) :(<button className="h-full w-full font-medium flex items-center justify-start gap-2 cursor-pointer pl-2" onClick={clickHandler}>
           {img}
           <span>{write}</span>
         </button>)}

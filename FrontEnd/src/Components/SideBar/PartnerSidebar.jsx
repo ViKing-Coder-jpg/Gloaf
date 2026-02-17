@@ -10,12 +10,12 @@ import {DropdownButton,Dropdown} from 'react-bootstrap';
 
 const PartnerSidebar = ({Name="Restaurant Name",img}) => {
   return (
-    <div className='w-[15vw] h-screen bg-[#4e2307] flex flex-col '>
+    <div className='w-[15vw] h-full bg-[#4e2307] flex flex-col '>
         <div className='pl-4 pt-4 text-white'>
            <Logo />
         </div>
             <Line color="#5e3820"/>
-        <div className='h-[77vh] p-4 flex flex-col gap-4'>
+        <div className='h-[80vh] p-4 flex flex-col gap-4'>
             <SidebarButton height={"35px"} width={"100%"} write="Overview" img={<BsGrid1X2Fill />} link="home"/>
             <SidebarButton height={"35px"} width={"100%"} write="Orders" img={<IoReceipt />} link="order"/>
             <SidebarButton height={"35px"} width={"100%"} write="Menu" img={<GiKnifeFork />} link="menu"/>

@@ -1,8 +1,11 @@
 import React from 'react'
+import { SalesPerformanceCard } from '../../../Components/Utilities/Cards'
 
 const Overview3 = () => {
   return (
-    <div>Overview3</div>
+    <div>
+      <SalesPerformanceCard />
+    </div>
   )
 }
 
