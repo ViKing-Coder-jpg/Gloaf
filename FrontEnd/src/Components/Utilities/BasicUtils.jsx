@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useRef,useEffect} from "react";
 import { Link,NavLink } from "react-router-dom";
 import Gloaf_icon from '../../assets/Gloaf_icon.png'
 
@@ -80,3 +80,57 @@ export const SearchBar=()=>{
               </div>
               </div>
 }
+
+export const ToggleDropdown = ({ children, position = "bottom" }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // 🎯 Position classes
+  const positionClasses = {
+    bottom: "top-full mt-2 right-2.5",
+    top: "bottom-full mb-2 left-0",
+    left: "right-full mr-2 top-0",
+    right: "left-full ml-2 top-0",
+  };
+
+  return (
+    <div className="relative inline-block" ref={dropdownRef}>
+      {/* Trigger */}
+      <div onClick={() => setIsOpen((prev) => !prev)}>
+        {children}
+      </div>
+
+      {/* Dropdown */}
+      {isOpen && (
+        <div
+          className={`absolute w-48 bg-[#fdf6ea] rounded-xl shadow-lg z-50 ${positionClasses[position]}`}
+        >
+          <ul className="py-2 text-gray-700">
+            <Link to="settings" ><li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+              Profile Settings
+            </li>
+            </Link>
+            
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">
+              Logout
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};

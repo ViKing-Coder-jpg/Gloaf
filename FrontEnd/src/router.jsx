@@ -23,6 +23,8 @@ import Profile from './Pages/customer/Profile/Profile.jsx'
 import AddressPage from './Pages/customer/Address/AddressPage.jsx'
 import ErrorPage from './Pages/Error Pages/ErrorPage.jsx'
 import AuthProvider from './Functions/TokenAuthorizer.jsx'
+import PartnerProfile from './Pages/Profile Pages/PartnerProfile.jsx'
+import UserProfile from './Pages/Profile Pages/UserProfile.jsx'
 
 
 
@@ -90,6 +92,10 @@ export const  router=createBrowserRouter([
                 path:'address',
                 element: <AddressPage />
             },
+            {
+                path: 'settings',
+                element:<UserProfile/>
+            },
         ]
     },
     {
@@ -126,6 +132,10 @@ export const  router=createBrowserRouter([
             {
                 path: 'alert',
                 element:<Notifications />
+            },
+            {
+                path: 'settings',
+                element:<PartnerProfile/>
             },
             
         ]

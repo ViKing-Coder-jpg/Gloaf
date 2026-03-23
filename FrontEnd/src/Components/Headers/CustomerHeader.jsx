@@ -4,6 +4,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import Gloaf_icon from '../../assets/Gloaf_icon.png'
 import { MdShoppingBasket } from "react-icons/md";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { ToggleDropdown } from '../Utilities/BasicUtils';
 
 const CustomerHeader = ({Name="Customer Name",miniLocation="Pune, Maharashtra"}) => {
   return (
@@ -55,11 +56,12 @@ const CustomerHeader = ({Name="Customer Name",miniLocation="Pune, Maharashtra"})
           <MdShoppingBasket className='h-[70%] w-[70%] object-cover text-[#bd702d]'/>
         </div>
         </Link>
-        <Link to="profile">
-        <div className='bg-[#fceccc] w-12 h-12 rounded-full border-[#fae0a5] border flex justify-center items-center text-[#52290b]'>
+        <ToggleDropdown>
+        <div className='bg-[#fceccc] w-12 h-12 rounded-full border-[#fae0a5] border flex justify-center items-center text-[#52290b] cursor-pointer'>
           <span>{Name.split(" ").map((ele)=>ele[0]).join("")}</span>
         </div>
-        </Link>
+        </ToggleDropdown>
+        
       </div>
     </div>
   </header>
