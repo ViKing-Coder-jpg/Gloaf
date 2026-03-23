@@ -6,8 +6,9 @@
     "install-backend": "cd BackEnd && npm install",
     "install-frontend": "cd FrontEnd && npm install",
     "install-all": "npm run install-backend && npm run install-frontend",
+    "prisma-generate": "cd BackEnd && npx prisma generate --schema=src/db/prisma/schema.prisma",
     "build-frontend": "cd FrontEnd && npm run build",
-    "build": "npm run install-all && npm run build-frontend",
+    "build": "npm run install-all && npm run prisma-generate && npm run build-frontend",
     "start": "cd BackEnd && npm start",
     "dev": "concurrently \"npm run dev --prefix BackEnd\" \"npm run dev --prefix FrontEnd\""
   },

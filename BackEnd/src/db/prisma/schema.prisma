@@ -4,8 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("MYSQL_URL_DEV")
+  provider = "postgresql"
+  url      = env("DIRECT_URL")
 }
 
 enum AccType {
