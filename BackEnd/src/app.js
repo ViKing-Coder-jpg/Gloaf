@@ -2,7 +2,7 @@ const express=require('express')
 const cors = require('cors')
 const dotenv = require('dotenv');
 const cookieParser= require('cookie-parser');
-
+const path = require('path');
 
 
 const signupRouter = require('./routes/signup.routes');
@@ -26,5 +26,13 @@ app.use('/api/login',loginRouter)
 app.use('/api/auth/',oAuthRouter)
 app.use('/api/user/',userRouter)
 app.use('/api/partner/',partnerRouter)
+
+// Handle SPA routing: serve index.html for unknown routes in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../../FrontEnd/dist')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../../FrontEnd/dist', 'index.html'));
+    });
+}
 
 module.exports={app}
