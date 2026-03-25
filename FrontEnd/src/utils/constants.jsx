@@ -4,36 +4,34 @@ import img3 from "../assets/Images/pizza.jpg";
 import axios from 'axios'
 
 export const imageData = [
-    {
-      imgKey: 1,
-      imgSrc: img1,
-      imgTitle:
-        "Food is not just fuel; it’s an experience that brings people together.",
-      imgText:
-        "Eating a balanced diet helps improve energy, immunity, and overall well-being.",
-    },
-    {
-      imgKey: 2,
-      imgSrc: img2,
-      imgTitle: "Good food is the foundation of genuine happiness.",
-      imgText:
-        "Fresh, locally sourced foods often retain more nutrients and better flavor.",
-    },
-    {
-      imgKey: 3,
-      imgSrc: img3,
-      imgTitle: "A meal shared is a memory made.",
-      imgText:
-        "Spices not only add flavor but also offer antioxidant and digestive benefits.",
-    },
-  ];
-export const baseServerURL = import.meta.env.PROD 
-  ? "/api" 
-  : "http://localhost:8000/api"
+  {
+    imgKey: 1,
+    imgSrc: img1,
+    imgTitle:
+      "Food is not just fuel; it’s an experience that brings people together.",
+    imgText:
+      "Eating a balanced diet helps improve energy, immunity, and overall well-being.",
+  },
+  {
+    imgKey: 2,
+    imgSrc: img2,
+    imgTitle: "Good food is the foundation of genuine happiness.",
+    imgText:
+      "Fresh, locally sourced foods often retain more nutrients and better flavor.",
+  },
+  {
+    imgKey: 3,
+    imgSrc: img3,
+    imgTitle: "A meal shared is a memory made.",
+    imgText:
+      "Spices not only add flavor but also offer antioxidant and digestive benefits.",
+  },
+];
+export const baseServerURL = true ? "https://gloaf.onrender.com/api" : "http://localhost:8000/api"
 
 export const api = axios.create({
-    baseURL: baseServerURL ,
-    withCredentials: true 
+  baseURL: baseServerURL,
+  withCredentials: true
 })
 
 export const foodBannerImage = [
