@@ -30,7 +30,7 @@ app.use('/api/partner/',partnerRouter)
 // Handle SPA routing: serve index.html for unknown routes in production
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../../FrontEnd/dist')));
-    app.get('(.*)', (req, res) => {
+    app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../../FrontEnd/dist', 'index.html'));
     });
 }
