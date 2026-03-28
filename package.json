@@ -4,7 +4,7 @@
   "description": "Fullstack deployment for Gloaf",
   "scripts": {
     "install-backend": "cd BackEnd && npm install",
-    "install-frontend": "cd FrontEnd && npm install",
+    "install-frontend": "cd FrontEnd && npm install --include=dev",
     "install-all": "npm run install-backend && npm run install-frontend",
     "prisma-generate": "cd BackEnd && npx prisma generate --schema=src/db/prisma/schema.prisma",
     "build-frontend": "cd FrontEnd && npm run build",
