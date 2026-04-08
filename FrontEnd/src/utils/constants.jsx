@@ -27,7 +27,7 @@ export const imageData = [
       "Spices not only add flavor but also offer antioxidant and digestive benefits.",
   },
 ];
-export const baseServerURL = "https://gloaf.onrender.com/api"
+export const baseServerURL = "http://localhost:8000/api"
 
 export const api = axios.create({
   baseURL: baseServerURL,
