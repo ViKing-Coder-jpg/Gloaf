@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { RestroCard } from "../../../Components/Utilities/Cards";
+import { homeRestaurantRecommendations } from "../../../utils/constants";
 
 const RestroRecommend = () => {
-  const [recom, setRecom] = useState([]);
-    
   return (
     <div className="w-full h-full flex flex-col items-center justify-center ">
       <div className=" w-full h-[15vh] flex flex-col justify-center p-5  ">
@@ -14,10 +13,10 @@ const RestroRecommend = () => {
           Highly Rated Restaurants by neighbours
         </span>
       </div>
-      <div className=" w-full h-[35vh] flex flex-col items-center justify-center">
-        <div className="w-full h-full overflow-x-auto overflow-y-hidden flex flex-col justify-center">
-          <div className="inline-flex space-x-4 scroll-smooth w-fit px-5">
-            {recom.map((ele, key) => {
+      <div className="w-full h-[35vh] px-5 pb-5">
+        <div className="h-full overflow-x-auto overflow-y-hidden">
+          <div className="flex h-full w-max items-start gap-4 pr-4">
+            {homeRestaurantRecommendations.map((ele, key) => {
               return <RestroCard key={key} data={ele}/>;
             })}
           </div>

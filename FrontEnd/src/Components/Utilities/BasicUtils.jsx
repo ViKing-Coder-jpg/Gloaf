@@ -1,5 +1,7 @@
 import React,{useState,useRef,useEffect} from "react";
 import { Link,NavLink } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+import { FiMapPin } from "react-icons/fi";
 import Gloaf_icon from '../../assets/Gloaf_icon.png'
 
 
@@ -63,22 +65,54 @@ export const IconHolder=({img,bg,border,ic,size="48px"})=>{
           </div>
 }
 
-export const SearchBar=()=>{
-  return <div className='flex bg-white rounded-xl w-[80vh] h-[6vh] shadow-lg'>
-              <div className='h-full w-[5%] flex justify-center items-center text-[#4D2308]'>
-                  <FaSearch />
-              </div>
-              <div className='h-full w-[82%] flex justify-center items-center'>
-                   <input type="text" id="Search" name="Search" placeholder="Search for food, coffee or restaurant..." className="block w-full  py-2 bg-white text-gray-900 placeholder-gray-400 h-full focus:outline-0"/>
-              </div>
-              <div className='flex justify-center items-center'>
-                  <div className="bg-[#F1B93D] h-[90%] w-[10vh] rounded-xl text-[#4D2308]  hover:text-white transition ease-in-out duration-300">
-                  <button type="submit" className="h-full w-full font-medium flex items-center justify-center gap-2 cursor-pointer">
-                      <span>Search</span>
-                  </button>
-                  </div>
-              </div>
-              </div>
+export const SearchBar=({
+  value="",
+  onChange,
+  onSubmit,
+  placeholder="Search for food, coffee or restaurant...",
+  buttonLabel="Search",
+  className="",
+  inputClassName="",
+  buttonClassName="",
+  withLocation=false,
+  locationLabel="",
+})=>{
+  return (
+    <form
+      className={`w-full rounded-[28px] border border-[#f3e1c7] bg-white/95 p-2 shadow-[0_16px_45px_rgba(134,84,27,0.12)] backdrop-blur-sm ${className}`}
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit?.(event);
+      }}
+    >
+      <div className="flex flex-col gap-3 md:flex-row md:items-center">
+        {withLocation && locationLabel ? (
+          <div className="flex items-center gap-2 rounded-full border border-[#ead8bd] bg-[#fffaf2] px-4 py-3 text-sm font-medium text-[#8c5b31]">
+            <FiMapPin className="text-[#b36728]" />
+            <span>{locationLabel}</span>
+          </div>
+        ) : null}
+        <div className="flex min-h-16 flex-1 items-center gap-3 rounded-[22px] bg-[#fffdf9] px-5">
+          <FaSearch className="shrink-0 text-[#c06f27]" />
+          <input
+            type="text"
+            id="Search"
+            name="Search"
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            className={`h-full min-h-12 w-full bg-transparent text-lg text-[#4D2308] placeholder:text-[#c4a88c] focus:outline-none ${inputClassName}`}
+          />
+        </div>
+        <button
+          type="submit"
+          className={`min-h-14 rounded-[18px] bg-[#f1b93d] px-7 text-base font-semibold text-[#4D2308] transition duration-300 hover:bg-[#e3a81c] hover:text-white ${buttonClassName}`}
+        >
+          {buttonLabel}
+        </button>
+      </div>
+    </form>
+  );
 }
 
 export const ToggleDropdown = ({ children, position = "bottom" }) => {

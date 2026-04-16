@@ -25,6 +25,7 @@ import ErrorPage from './Pages/Error Pages/ErrorPage.jsx'
 import AuthProvider from './Functions/TokenAuthorizer.jsx'
 import PartnerProfile from './Pages/Profile Pages/PartnerProfile.jsx'
 import UserProfile from './Pages/Profile Pages/UserProfile.jsx'
+import Restaurant from './Pages/customer/Restaurant/Restaurant.jsx'
 
 
 
@@ -95,6 +96,10 @@ export const  router=createBrowserRouter([
             {
                 path: 'settings',
                 element:<UserProfile/>
+            },
+            {
+                path: 'restaurant/:restaurantSlug',
+                element:<Restaurant/>
             },
         ]
     },

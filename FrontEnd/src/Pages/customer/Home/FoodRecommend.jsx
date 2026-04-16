@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { FoodCard } from "../../../Components/Utilities/Cards";
+import { homeDishRecommendations } from "../../../utils/constants";
 
 const FoodRecommend = () => {
-  const [recom, setRecom] = useState([]);
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className=" w-full h-[15vh] flex flex-col justify-center p-5">
+      <div className=" w-full h-[12vh] flex flex-col justify-center p-3">
         <span className="text-[#4e2307] text-3xl font-medium">
           Your Gloaf Picks
         </span>
@@ -13,11 +13,11 @@ const FoodRecommend = () => {
           Recomendation based on recent order
         </span>
       </div>
-      <div className=" w-full h-[45vh] flex flex-col items-center justify-center">
-        <div className="w-full h-full overflow-x-auto overflow-y-hidden flex flex-col justify-center">
-          <div className="inline-flex space-x-4 scroll-smooth w-fit p-12 ">
-            {recom.map((ele, key) => {
-              return <FoodCard key={key} data={ele} />;
+      <div className="w-full h-[50vh] px-5 pb-5 flex flex-col justify-center">
+        <div className="h-full flex flex-col overflow-x-auto overflow-y-hidden justify-center">
+          <div className="flex h-full w-max items-start gap-4 pr-4 justify-center">
+            {homeDishRecommendations.map((ele, key) => {
+              return <FoodCard key={key} data={{ ...ele, compact: true, className: "min-w-[280px]" }} />;
             })}
           </div>
         </div>

@@ -73,7 +73,7 @@ const restaurantSchema = new mongoose.Schema({
 const restaurantProfile = mongoose.model("restaurantProfile", restaurantSchema);
 const connection = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URL_PROD);
+    await mongoose.connect(process.env.MONGODB_URL_DEV);
     console.log("MongoDB is Connected !!!");
   } catch (err) {
     console.log(err);

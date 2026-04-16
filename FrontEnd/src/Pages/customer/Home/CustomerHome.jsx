@@ -7,8 +7,8 @@ import FoodBanner from './FoodBanner'
 
 const CustomerHome = () => {
   return (
-    <div >
-      <div className='w-screen h-[60vh] flex flex-col justify-center items-center'>
+    <div className='bg-[radial-gradient(circle_at_top,#f9edd8_0%,#fcf6ea_30%,#fcf7ef_100%)]'>
+      <div className='w-screen min-h-[60vh] flex flex-col justify-center items-center py-12'>
         <SearchIntro />
       </div>
       <div className='w-screen h-[50vh]'><FoodBanner/></div>
