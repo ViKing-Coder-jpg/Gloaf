@@ -26,6 +26,7 @@ import AuthProvider from './Functions/TokenAuthorizer.jsx'
 import PartnerProfile from './Pages/Profile Pages/PartnerProfile.jsx'
 import UserProfile from './Pages/Profile Pages/UserProfile.jsx'
 import Restaurant from './Pages/customer/Restaurant/Restaurant.jsx'
+import CheckOut from './Pages/customer/Cart/CheckOut.jsx'
 
 
 
@@ -83,7 +84,7 @@ export const  router=createBrowserRouter([
             },
             {
                 path:'cart',
-                element: <CartPage />
+                element: <CartPage />,
             },
             {
                 path:'profile',
@@ -101,6 +102,10 @@ export const  router=createBrowserRouter([
                 path: 'restaurant/:restaurantSlug',
                 element:<Restaurant/>
             },
+             {
+                        path:'checkout',
+                        element:<CheckOut/>
+            }
         ]
     },
     {
