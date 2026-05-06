@@ -31,7 +31,7 @@ export const imageData = [
   },
 ];
 
-export const baseServerURL = "http://localhost:8000/api"
+export const baseServerURL = "http://gloaf.onrender.com/api"
 
 export const api = axios.create({
   baseURL: baseServerURL,
@@ -370,88 +370,88 @@ export const restaurantCatalog = [
     ],
   },
   {
-  slug: "urban-spice-kitchen",
-  name: "Urban Spice Kitchen",
-  shortDescription: "Bold Indian street flavors with a modern twist.",
-  description:
-    "A vibrant fusion of classic Indian street food and contemporary flavors, crafted with aromatic spices and fresh ingredients.",
-  cuisine: ["Indian", "Street Food", "Fusion"],
-  rating: 4.7,
-  ratingsCount: "1K+ ratings",
-  distance: "2.1 mi",
-  openUntil: "11:00 PM",
-  address: "22 Spice Street, Flavor Town, CA 90210",
-  phone: "(555) 234-7789",
-  isOpen: true,
-  deliveryFee: "$2.49",
-  expectedTime: "25-35 min",
-  bannerTone: "from-[#7a1f1f] via-[#a83232] to-[#5c1515]",
-  cardTone: "warm",
-  heroImage: img2,
-  featuredBadges: [
-    { label: "Chef Special", tone: "bg-[#fff3e0] text-[#e65100]" },
-    { label: "Top Rated", tone: "bg-[#e8f5e9] text-[#2e7d32]" },
-  ],
-  popularItems: [
-    {
-      name: "Butter Chicken Bowl",
-      description: "Creamy tomato-based curry with tender chicken and basmati rice.",
-      price: 14,
-      image: img2,
-    },
-    {
-      name: "Paneer Tikka Wrap",
-      description: "Grilled paneer wrapped with mint chutney and fresh veggies.",
-      price: 11,
-      image: img3,
-    },
-  ],
-  menuSections: [
-    {
-      title: "Popular Items",
-      count: 5,
-      items: [
-        {
-          name: "Butter Chicken Bowl",
-          description: "Creamy tomato-based curry with tender chicken and basmati rice.",
-          price: 14,
-          image: img2,
-        },
-        {
-          name: "Paneer Tikka Wrap",
-          description: "Grilled paneer wrapped with mint chutney and fresh veggies.",
-          price: 11,
-          image: img3,
-        },
-      ],
-    },
-    {
-      title: "Main Courses",
-      count: 7,
-      items: [
-        {
-          name: "Hyderabadi Biryani",
-          description: "Fragrant basmati rice layered with spiced chicken and herbs.",
-          price: 16,
-          image: img2,
-        },
-      ],
-    },
-    {
-      title: "Desserts",
-      count: 3,
-      items: [
-        {
-          name: "Gulab Jamun Cheesecake",
-          description: "Fusion dessert with soft gulab jamun and creamy cheesecake base.",
-          price: 9,
-          image: img1,
-          cardLayout: "feature",
-        },
-      ],
-    },
-  ],
-}
+    slug: "urban-spice-kitchen",
+    name: "Urban Spice Kitchen",
+    shortDescription: "Bold Indian street flavors with a modern twist.",
+    description:
+      "A vibrant fusion of classic Indian street food and contemporary flavors, crafted with aromatic spices and fresh ingredients.",
+    cuisine: ["Indian", "Street Food", "Fusion"],
+    rating: 4.7,
+    ratingsCount: "1K+ ratings",
+    distance: "2.1 mi",
+    openUntil: "11:00 PM",
+    address: "22 Spice Street, Flavor Town, CA 90210",
+    phone: "(555) 234-7789",
+    isOpen: true,
+    deliveryFee: "$2.49",
+    expectedTime: "25-35 min",
+    bannerTone: "from-[#7a1f1f] via-[#a83232] to-[#5c1515]",
+    cardTone: "warm",
+    heroImage: img2,
+    featuredBadges: [
+      { label: "Chef Special", tone: "bg-[#fff3e0] text-[#e65100]" },
+      { label: "Top Rated", tone: "bg-[#e8f5e9] text-[#2e7d32]" },
+    ],
+    popularItems: [
+      {
+        name: "Butter Chicken Bowl",
+        description: "Creamy tomato-based curry with tender chicken and basmati rice.",
+        price: 14,
+        image: img2,
+      },
+      {
+        name: "Paneer Tikka Wrap",
+        description: "Grilled paneer wrapped with mint chutney and fresh veggies.",
+        price: 11,
+        image: img3,
+      },
+    ],
+    menuSections: [
+      {
+        title: "Popular Items",
+        count: 5,
+        items: [
+          {
+            name: "Butter Chicken Bowl",
+            description: "Creamy tomato-based curry with tender chicken and basmati rice.",
+            price: 14,
+            image: img2,
+          },
+          {
+            name: "Paneer Tikka Wrap",
+            description: "Grilled paneer wrapped with mint chutney and fresh veggies.",
+            price: 11,
+            image: img3,
+          },
+        ],
+      },
+      {
+        title: "Main Courses",
+        count: 7,
+        items: [
+          {
+            name: "Hyderabadi Biryani",
+            description: "Fragrant basmati rice layered with spiced chicken and herbs.",
+            price: 16,
+            image: img2,
+          },
+        ],
+      },
+      {
+        title: "Desserts",
+        count: 3,
+        items: [
+          {
+            name: "Gulab Jamun Cheesecake",
+            description: "Fusion dessert with soft gulab jamun and creamy cheesecake base.",
+            price: 9,
+            image: img1,
+            cardLayout: "feature",
+          },
+        ],
+      },
+    ],
+  }
 ]
 
 export const restaurantSearchResults = restaurantCatalog.map((restaurant) => ({
