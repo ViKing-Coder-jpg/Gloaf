@@ -26,7 +26,7 @@ app.use('/api/login', loginRouter)
 app.use('/api/auth/', oAuthRouter)
 app.use('/api/user/', userRouter)
 app.use('/api/partner/', partnerRouter)
-app.head('/',(req,res)=>{res.status(200)})
+app.head('/', (req, res) => res.status(200))
 
 // Handle SPA routing: serve index.html for unknown routes in production
 if (process.env.NODE_ENV === 'production') {
